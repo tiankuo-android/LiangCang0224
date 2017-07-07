@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/ssdk_auth_title_back"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:id="@+id/iv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_mgz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textColor="@android:color/holo_blue_bright"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/tv_fragment"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:text="数据"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_shop"
+            android:visibility="gone"
+            android:src="@drawable/actionbar_navigation_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_daren"
+            android:visibility="gone"
+            android:src="@drawable/actionbar_navigation_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_back"
+            android:visibility="gone"
+            android:src="@drawable/abc_ic_clear_mtrl_alpha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

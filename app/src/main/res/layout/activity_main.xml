@@ -23,6 +23,7 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:checked="true"
             android:id="@+id/rb_shop"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/shop_button_selector"
