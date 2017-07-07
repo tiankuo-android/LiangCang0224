@@ -36,8 +36,8 @@ public class MyDarenAdapter extends RecyclerView.Adapter<MyDarenAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.e("TAG","空指针");
-//        View itemView = View.inflate(context, R.layout.daren_item, null);
-        View itemView = LayoutInflater.from(context).inflate(R.layout.daren_item,parent,false);
+//        View itemView = View.inflate(context, R.layout.item_daren, null);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_daren,parent,false);
         Log.e("TAG",itemView + "");
         return new MyViewHolder(itemView);
     }

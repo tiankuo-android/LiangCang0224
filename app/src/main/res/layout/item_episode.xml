@@ -20,8 +20,8 @@
 
         <include layout="@layout/common_user_info" />
 
-        <include layout="@layout/video_middle" />
+        <include layout="@layout/text_middle" />
 
-        <include layout="@layout/common_bottom" />
+        <include layout="@layout/text_common_bottom" />
     </LinearLayout>
 </LinearLayout>
