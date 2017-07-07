@@ -9,7 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.domain.EpisodeBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.domain.CreamBean;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -23,10 +24,10 @@ import butterknife.InjectView;
  */
 
 public class EpisodeAdapter extends BaseAdapter {
-    private final List<EpisodeBean.ListBean> datas;
+    private final List<CreamBean.ListBean> datas;
     private final Context context;
 
-    public EpisodeAdapter(Context mContext, List<EpisodeBean.ListBean> datas) {
+    public EpisodeAdapter(Context mContext, List<CreamBean.ListBean> datas) {
         this.context = mContext;
         this.datas = datas;
     }
@@ -56,9 +57,14 @@ public class EpisodeAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.tvName.setText(datas.get(0).getU().getName());
-        viewHolder.tvTimeRefresh.setText(datas.get(0).getPasstime());
+        viewHolder.tvName.setText(datas.get(position).getU().getName());
+        viewHolder.tvTimeRefresh.setText(datas.get(position).getPasstime());
+        viewHolder.tvContext.setText(datas.get(position).getText());
+        String url = datas.get(position).getU().getRoom_url();
 
+        Glide.with(context)
+                .load(url)
+                .into(viewHolder.ivHeadpic);
         return convertView;
     }
 
@@ -71,8 +77,28 @@ public class EpisodeAdapter extends BaseAdapter {
         TextView tvTimeRefresh;
         @InjectView(R.id.ll_video_user_info)
         LinearLayout llVideoUserInfo;
-        @InjectView(R.id.iv_right_more)
-        ImageView ivRightMore;
+        @InjectView(R.id.tv_context)
+        TextView tvContext;
+        @InjectView(R.id.tv_ding)
+        TextView tvDing;
+        @InjectView(R.id.tv_shenhe_ding_number)
+        TextView tvShenheDingNumber;
+        @InjectView(R.id.ll_ding)
+        LinearLayout llDing;
+        @InjectView(R.id.iv_cai)
+        TextView ivCai;
+        @InjectView(R.id.tv_shenhe_cai_number)
+        TextView tvShenheCaiNumber;
+        @InjectView(R.id.ll_cai)
+        LinearLayout llCai;
+        @InjectView(R.id.tv_posts_number)
+        TextView tvPostsNumber;
+        @InjectView(R.id.ll_share)
+        LinearLayout llShare;
+        @InjectView(R.id.tv_download_number)
+        TextView tvDownloadNumber;
+        @InjectView(R.id.ll_download)
+        LinearLayout llDownload;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
