@@ -8,7 +8,7 @@ import android.widget.RadioGroup;
 
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.DarenFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.CreamFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.ShopFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.ShopFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.UserFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.MagazineFragment;
 

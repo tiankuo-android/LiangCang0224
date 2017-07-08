@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.creamfragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -18,45 +18,36 @@ import butterknife.InjectView;
  * Created by Administrator on 2017/7/5 0005.
  */
 
-public class CreamFragment extends BaseFragment {
-
+public class ShopFragment extends BaseFragment {
     @InjectView(R.id.iv_search)
     ImageView ivSearch;
-    @InjectView(R.id.tv_mgz)
-    TextView tvMgz;
     @InjectView(R.id.tv_fragment)
     TextView tvFragment;
     @InjectView(R.id.iv_shop)
     ImageView ivShop;
-    @InjectView(R.id.iv_daren)
-    ImageView ivDaren;
-    @InjectView(R.id.iv_back)
-    ImageView ivBack;
     @InjectView(R.id.tab_layout)
     TabLayout tabLayout;
     @InjectView(R.id.view_pager)
     ViewPager viewPager;
-    private CreamAdapter pagerAdapter;
+    private ShopAdapter pagerAdapter;
 
     @Override
     public View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_cream, null);
-        tvFragment.setText("精华");
-        ButterKnife.inject(this,view);
+        View view = View.inflate(mContext, R.layout.fragment_shop, null);
+        ButterKnife.inject(this, view);
+        ivSearch.setVisibility(View.VISIBLE);
+        tvFragment.setText("商店");
+        ivShop.setVisibility(View.VISIBLE);
         return view;
-
     }
 
     @Override
     public void initData() {
         super.initData();
-        pagerAdapter = new CreamAdapter(getFragmentManager());
+        pagerAdapter = new ShopAdapter(getFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-
         tabLayout.setupWithViewPager(viewPager);
-        //如果有多个ViewPager页面
-//        tabLayout.setTabMode(TableLayout.Mo);
-//        tabLayout.setTabMode(TableLayout.MODE_SCROLLABLE);
+
     }
 
     @Override
@@ -64,5 +55,4 @@ public class CreamFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
-
 }

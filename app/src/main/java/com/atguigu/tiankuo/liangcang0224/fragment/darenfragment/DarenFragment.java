@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 import com.atguigu.tiankuo.liangcang0224.bean.DarenBean;
-import com.atguigu.tiankuo.liangcang0224.utils.DarenUtils;
+import com.atguigu.tiankuo.liangcang0224.utils.UrlUtils;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -56,7 +56,7 @@ public class DarenFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        url = DarenUtils.MAIN_URL;
+        url = UrlUtils.DAREN_MAIN_URL;
         getDataFromNet(url);
     }
 

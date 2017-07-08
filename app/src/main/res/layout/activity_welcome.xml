@@ -8,7 +8,7 @@
     tools:context="com.atguigu.tiankuo.liangcang0224.WelcomeActivity">
 
     <ImageView
-        android:src="@drawable/feature5"
+        android:src="@drawable/good"
         android:id="@+id/welcome_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
