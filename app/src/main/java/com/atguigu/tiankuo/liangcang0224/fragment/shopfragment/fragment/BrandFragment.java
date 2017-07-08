@@ -9,6 +9,7 @@ import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.BrandAdapter;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
+import com.atguigu.tiankuo.liangcang0224.utils.UrlUtils;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.google.gson.Gson;
@@ -57,7 +58,7 @@ public class BrandFragment extends BaseFragment {
     }
 
     private void getFromNet() {
-        String url = "";
+        String url = UrlUtils.BREAD_BASE_URL + 1 + UrlUtils.BREAD_LAST_URL;
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -90,7 +91,7 @@ public class BrandFragment extends BaseFragment {
     public void initData() {
         super.initData();
         getFromNet();
-        ListAdapter adapter = new BrandAdapter(mContext,datas);
+        ListAdapter adapter = new BrandAdapter(mContext, datas);
         listview.setAdapter(adapter);
     }
 

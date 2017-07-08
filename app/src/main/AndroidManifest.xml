@@ -21,7 +21,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".fragment.darenfragment.SortActivity" />
         <activity android:name=".fragment.creamfragment.ShowImageAndGifActivity" />
-        <activity android:name=".MyApplication"></activity>
+        <activity android:name=".fragment.shopfragment.activity.BrandProductActivity"></activity>
     </application>
 
 </manifest>

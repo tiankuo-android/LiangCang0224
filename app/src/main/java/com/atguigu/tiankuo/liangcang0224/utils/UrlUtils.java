@@ -22,5 +22,6 @@ public class UrlUtils {
     public static String DAREN_IN_URL = DAREN_BASE_URL + "orderby=reg_time&" + DAREN_LAST_URL;
 
 
-    public static String BREAD_BASE_URL = "http://mobile.iliangcang.com/brand/brandList?app_key=Android&count=20";
+    public static String BREAD_BASE_URL = "http://mobile.iliangcang.com/brand/brandList?app_key=Android&count=20&page=";
+    public static String BREAD_LAST_URL= "&sig=430BD99E6C913B8B8C3ED109737ECF15%7C830952120106768&v=1.0";
 }

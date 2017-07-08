@@ -1,14 +1,17 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.activity.BrandProductActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
 import com.bumptech.glide.Glide;
 
@@ -55,14 +58,23 @@ public class BrandAdapter extends BaseAdapter {
             convertView = View.inflate(context, R.layout.item_shop_brand, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.tvName.setText(datas.get(position).getBrand_name());
-        Log.e("TAG",datas.get(position).getBrand_name());
-        Glide.with(context).load(R.drawable.abc_ic_go_search_api_mtrl_alpha)
+        Log.e("TAG", datas.get(position).getBrand_name());
+        String imageView = datas.get(position).getBrand_logo();
+        Glide.with(context)
+                .load(imageView)
                 .into(viewHolder.ivHead);
 
+        viewHolder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, BrandProductActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 
@@ -73,6 +85,8 @@ public class BrandAdapter extends BaseAdapter {
         TextView tvName;
         @InjectView(R.id.iv_putin)
         ImageView ivPutin;
+        @InjectView(R.id.ll_item)
+        LinearLayout llItem;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
