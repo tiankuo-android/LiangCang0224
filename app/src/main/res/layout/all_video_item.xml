@@ -20,7 +20,7 @@
 
         <include layout="@layout/common_user_info" />
 
-        <include layout="@layout/video_middle" />
+        <include layout="@layout/middle_video" />
 
         <include layout="@layout/video_common_bottom" />
     </LinearLayout>

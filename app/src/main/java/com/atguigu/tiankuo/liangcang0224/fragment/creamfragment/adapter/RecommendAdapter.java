@@ -250,8 +250,6 @@ public class RecommendAdapter extends BaseAdapter {
         TextHolder(View convertView) {
             super(convertView);
             tvContext = (TextView) convertView.findViewById(R.id.tv_context);
-
-
         }
 
         public void setData(CreamBean.ListBean mediaItem) {

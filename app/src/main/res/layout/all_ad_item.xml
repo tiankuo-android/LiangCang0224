@@ -19,7 +19,7 @@
         android:paddingRight="10dp">
 
 
-        <include layout="@layout/ad_middle" />
+        <include layout="@layout/middle_ad" />
 
     </LinearLayout>
 

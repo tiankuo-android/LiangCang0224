@@ -63,8 +63,6 @@ public class RecommendFragment extends BaseFragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                 CreamBean.ListBean listEntity = datas.get(position);
                 if (listEntity != null) {
                     //3.传递视频列表

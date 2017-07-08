@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.domain.CreamBean;
-import com.bumptech.glide.Glide;
+
+import org.xutils.x;
 
 import java.util.List;
 
@@ -60,11 +61,10 @@ public class EpisodeAdapter extends BaseAdapter {
         viewHolder.tvName.setText(datas.get(position).getU().getName());
         viewHolder.tvTimeRefresh.setText(datas.get(position).getPasstime());
         viewHolder.tvContext.setText(datas.get(position).getText());
-        String url = datas.get(position).getU().getRoom_url();
 
-        Glide.with(context)
-                .load(url)
-                .into(viewHolder.ivHeadpic);
+        if (datas.get(position).getU() != null && datas.get(position).getU().getHeader() != null && datas.get(position).getU().getHeader().get(0) != null) {
+            x.image().bind(viewHolder.ivHeadpic, datas.get(position).getU().getHeader().get(0));
+        }
         return convertView;
     }
 
