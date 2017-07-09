@@ -7,7 +7,9 @@ import android.view.View;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.ClassifyAdapter;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.ClassifyBean;
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -60,7 +62,8 @@ public class ClassifyFragment extends BaseFragment {
     }
 
     private void processData(String response) {
-        ClassifyBean classifyBean = new ClassifyBean();
+        ClassifyBean classifyBean = new Gson().fromJson(response,ClassifyBean.class);
+        Log.e("TAG","数据" + classifyBean.getData().getItems().get(0).getCover_img());
         datas = classifyBean.getData().getItems();
         if (datas != null && datas.size() > 0) {
             //有数据
