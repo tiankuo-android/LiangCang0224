@@ -11,17 +11,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".fragment.darenfragment.SortActivity" />
+        <activity android:name=".WelcomeActivity" />
         <activity android:name=".fragment.creamfragment.ShowImageAndGifActivity" />
-        <activity android:name=".fragment.shopfragment.activity.BrandProductActivity"></activity>
+        <activity android:name=".fragment.shopfragment.activity.BrandProductActivity" />
+        <activity android:name=".fragment.darenfragment.DetailsDarenActivity"></activity>
     </application>
 
 </manifest>

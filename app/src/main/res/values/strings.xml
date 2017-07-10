@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">良仓-田阔</string>
+    <string name="count_like">喜欢\n%1$s</string>
+    <string name="count_recommend">推荐\n%1$s</string>
+    <string name="count_attention">关注\n%1$s</string>
+    <string name="count_fans">粉丝\n%1$s</string>
+    &#10;
 </resources>

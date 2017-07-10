@@ -1,16 +1,17 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.bean.DarenBean;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -35,15 +36,12 @@ public class MyDarenAdapter extends RecyclerView.Adapter<MyDarenAdapter.MyViewHo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.e("TAG","空指针");
-//        View itemView = View.inflate(context, R.layout.item_daren, null);
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_daren,parent,false);
-        Log.e("TAG",itemView + "");
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_daren, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         DarenBean.DataBean.ItemsBean itemsBean = datas.get(position);
         holder.tvItemName.setText(itemsBean.getUsername());
         holder.tvItemJob.setText(itemsBean.getDuty());
@@ -52,6 +50,17 @@ public class MyDarenAdapter extends RecyclerView.Adapter<MyDarenAdapter.MyViewHo
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.ivItemDaren);
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,DetailsDarenActivity.class);
+                //序列化
+                intent.putExtra("user_id",datas.get(position).getUid());
+                Log.e("TAG","个人ID" + datas.get(position).getUid());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -66,11 +75,12 @@ public class MyDarenAdapter extends RecyclerView.Adapter<MyDarenAdapter.MyViewHo
         TextView tvItemName;
         @InjectView(R.id.tv_item_job)
         TextView tvItemJob;
+        @InjectView(R.id.ll_item)
+        LinearLayout llItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
         }
     }
-
 }

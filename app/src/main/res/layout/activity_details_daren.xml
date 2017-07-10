@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_details_daren"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.DetailsDarenActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_daren_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ease_new_friends_icon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:id="@+id/tv_daren_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名字" />
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:id="@+id/tv_daren_duty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="职业" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:background="@drawable/bg_activities_item_end_transparent"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:textSize="10dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="关注" />
+
+                <Button
+                    android:textSize="10dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="私信" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_daren"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/btn_like"
+            style="@style/DarenButtonStyle"
+            android:checked="true"
+            android:text="@string/count_like" />
+
+        <RadioButton
+            android:id="@+id/btn_recommend"
+            style="@style/DarenButtonStyle"
+            android:text="@string/count_recommend" />
+
+        <RadioButton
+            android:id="@+id/btn_attention"
+            style="@style/DarenButtonStyle"
+            android:text="@string/count_attention" />
+
+        <RadioButton
+            android:id="@+id/btn_fans"
+            style="@style/DarenButtonStyle"
+            android:text="@string/count_fans" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

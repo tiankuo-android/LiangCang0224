@@ -1,5 +1,6 @@
-package com.atguigu.tiankuo.liangcang0224.bean;
+package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/6 0006.
  */
 
-public class DarenBean {
+public class DarenBean implements Serializable {
 
     /**
      * meta : {"status":0,"server_time":"2017-07-06 11:51:32","account_id":0,"cost":0.013352155685425,"errdata":null,"errmsg":""}
@@ -44,7 +45,7 @@ public class DarenBean {
         this.data = data;
     }
 
-    public static class MetaBean {
+    public static class MetaBean implements Serializable {
         /**
          * status : 0
          * server_time : 2017-07-06 11:51:32
@@ -110,7 +111,7 @@ public class DarenBean {
         }
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * has_more : true
          * num_items : 177
@@ -145,7 +146,7 @@ public class DarenBean {
             this.items = items;
         }
 
-        public static class ItemsBean {
+        public static class ItemsBean implements Serializable{
             /**
              * uid : 12596
              * username : 山本耀司
@@ -210,7 +211,7 @@ public class DarenBean {
                 this.user_images = user_images;
             }
 
-            public static class UserImagesBean {
+            public static class UserImagesBean implements Serializable{
                 /**
                  * self_img : 1
                  * orig : http://imgs-qn.iliangcang.com/ware/userhead/orig/2/12/12596.jpg?t=1499313092
