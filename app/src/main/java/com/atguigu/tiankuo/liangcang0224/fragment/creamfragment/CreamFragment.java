@@ -41,8 +41,8 @@ public class CreamFragment extends BaseFragment {
     @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragment_cream, null);
-        tvFragment.setText("精华");
         ButterKnife.inject(this,view);
+        tvFragment.setText("精华");
         return view;
 
     }

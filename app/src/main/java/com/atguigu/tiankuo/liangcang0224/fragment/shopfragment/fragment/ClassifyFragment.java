@@ -50,12 +50,12 @@ public class ClassifyFragment extends BaseFragment {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG", "请求失败");
+                Log.e("TAG", "请求失败==Classify");
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("TAG", "请求成功");
+                Log.e("TAG", "请求成功==Classify");
                 processData(response);
             }
         });
@@ -63,7 +63,6 @@ public class ClassifyFragment extends BaseFragment {
 
     private void processData(String response) {
         ClassifyBean classifyBean = new Gson().fromJson(response,ClassifyBean.class);
-        Log.e("TAG","数据" + classifyBean.getData().getItems().get(0).getCover_img());
         datas = classifyBean.getData().getItems();
         if (datas != null && datas.size() > 0) {
             //有数据
@@ -72,7 +71,7 @@ public class ClassifyFragment extends BaseFragment {
             recyclerview.setLayoutManager(new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false));
         } else {
             //没有数据
-            Log.e("TAG", "没有数据");
+            Log.e("TAG", "没有数据==Classify");
         }
     }
 

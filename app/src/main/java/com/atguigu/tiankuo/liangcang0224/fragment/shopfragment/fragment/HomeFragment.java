@@ -1,8 +1,8 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment;
 
 import android.view.View;
-import android.widget.TextView;
 
+import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 
 /**
@@ -14,8 +14,7 @@ import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 public class HomeFragment extends BaseFragment {
     @Override
     public View initView() {
-        TextView textView = new TextView(mContext);
-        textView.setText("首页");
-        return textView;
+       View view = View.inflate(mContext, R.layout.fragment_shop_main,null);
+        return view;
     }
 }

@@ -6,9 +6,9 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <ImageView
 
@@ -29,37 +29,40 @@
     </RelativeLayout>
 
     <TextView
-        android:layout_weight="1"
         android:id="@+id/tv_fragment"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:text="数据"
         android:textColor="#ffffff"
-        android:textSize="25sp"
-        android:layout_height="wrap_content" />
+        android:textSize="25sp" />
+
     <RelativeLayout
-        android:padding="5dp"
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/iv_shop"
-            android:visibility="gone"
-            android:src="@drawable/actionbar_navigation_cart"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/actionbar_navigation_cart"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/iv_daren"
-            android:visibility="gone"
-            android:src="@drawable/actionbar_navigation_menu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/actionbar_navigation_menu"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/iv_back"
-            android:visibility="gone"
-            android:src="@drawable/abc_ic_clear_mtrl_alpha"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/abc_ic_clear_mtrl_alpha"
+            android:visibility="gone" />
     </RelativeLayout>
 </LinearLayout>

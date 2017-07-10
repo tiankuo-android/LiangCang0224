@@ -62,12 +62,12 @@ public class BrandFragment extends BaseFragment {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG", "请求失败");
+                Log.e("TAG", "请求失败==Brand");
             }
 
             @Override
             public void onResponse(String json, int id) {
-                Log.e("TAG", "段子请求成功");
+                Log.e("TAG", "请求成功==Brand");
                 processData(json);
                 materialRefreshLayout.finishRefresh();
             }
@@ -83,7 +83,7 @@ public class BrandFragment extends BaseFragment {
             listview.setAdapter(adapter);
 
         } else {
-            Log.e("TAG", "没有数据");
+            Log.e("TAG", "没有数据==Brand");
         }
     }
 
