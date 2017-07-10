@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.DetailsDarenBean;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.fragment.AttentionFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.fragment.FansFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.fragment.LikeFragment;
@@ -113,6 +114,11 @@ public class DetailsDarenActivity extends AppCompatActivity {
             case  R.id.btn_like:
                 if (likeFragment == null) {
                     likeFragment = new LikeFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userid",user_id);//这里的values就是我们要传的值
+                    likeFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, likeFragment);
                 } else {
                     transaction.show(likeFragment);
@@ -121,6 +127,11 @@ public class DetailsDarenActivity extends AppCompatActivity {
             case  R.id.btn_recommend:
                 if (recomFragment == null) {
                     recomFragment = new RecomFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userid",user_id);//这里的values就是我们要传的值
+                    recomFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, recomFragment);
                 } else {
                     transaction.show(recomFragment);
@@ -129,6 +140,11 @@ public class DetailsDarenActivity extends AppCompatActivity {
             case  R.id.btn_attention:
                 if (attentionFragment == null) {
                     attentionFragment = new AttentionFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userid",user_id);//这里的values就是我们要传的值
+                    attentionFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, attentionFragment);
                 } else {
                     transaction.show(attentionFragment);
@@ -137,6 +153,11 @@ public class DetailsDarenActivity extends AppCompatActivity {
             case  R.id.btn_fans:
                 if (fansFragment == null) {
                     fansFragment = new FansFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userid",user_id);//这里的values就是我们要传的值
+                    fansFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, fansFragment);
                 } else {
                     transaction.show(fansFragment);

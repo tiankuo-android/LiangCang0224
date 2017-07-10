@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.DarenBean;
 import com.atguigu.tiankuo.liangcang0224.utils.UrlUtils;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;

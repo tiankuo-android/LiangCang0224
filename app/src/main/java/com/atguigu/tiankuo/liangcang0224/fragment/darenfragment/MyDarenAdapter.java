@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.DarenBean;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

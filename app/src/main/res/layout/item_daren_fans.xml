@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:id="@+id/ll_item"
+    android:orientation="vertical">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/good_big_bg"
+        android:id="@+id/iv_item_daren_fans"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:text="名字" />
+
+    <TextView
+        android:id="@+id/tv_item_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:text="职业" />
+</LinearLayout>

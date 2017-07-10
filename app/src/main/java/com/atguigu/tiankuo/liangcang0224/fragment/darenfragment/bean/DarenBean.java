@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean;
 
 import java.io.Serializable;
 import java.util.List;
