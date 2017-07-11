@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.activity.BrandProductActivity;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.BrandProductActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
 import com.bumptech.glide.Glide;
 
@@ -52,7 +52,7 @@ public class BrandAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.item_shop_brand, null);
@@ -62,16 +62,19 @@ public class BrandAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.tvName.setText(datas.get(position).getBrand_name());
-        Log.e("TAG", datas.get(position).getBrand_name());
         String imageView = datas.get(position).getBrand_logo();
         Glide.with(context)
                 .load(imageView)
                 .into(viewHolder.ivHead);
 
+        Log.e("TAG","Brand_Id ==" + datas.get(position).getBrand_id());
+
         viewHolder.llItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, BrandProductActivity.class);
+                intent.putExtra("brand", datas.get(position).getBrand_id() + "");
+                intent.putExtra("position",position + "");
                 context.startActivity(intent);
             }
         });

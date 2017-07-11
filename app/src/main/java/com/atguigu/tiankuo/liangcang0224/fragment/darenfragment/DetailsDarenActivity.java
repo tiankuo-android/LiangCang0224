@@ -103,7 +103,7 @@ public class DetailsDarenActivity extends AppCompatActivity {
                 switchFragment(checkedId);
             }
         });
-
+        switchFragment(R.id.btn_like);
     }
 
     private void switchFragment(int checkedId) {

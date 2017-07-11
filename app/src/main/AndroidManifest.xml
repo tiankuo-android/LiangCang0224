@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".fragment.creamfragment.ShowImageAndGifActivity" />
-        <activity android:name=".fragment.shopfragment.activity.BrandProductActivity" />
+        <activity android:name=".fragment.shopfragment.fragment.brandfragment.BrandProductActivity" />
         <activity android:name=".fragment.darenfragment.DetailsDarenActivity"></activity>
     </application>
 

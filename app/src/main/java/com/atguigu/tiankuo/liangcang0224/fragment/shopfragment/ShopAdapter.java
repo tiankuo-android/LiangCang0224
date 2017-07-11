@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.BrandFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.BrandFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.ClassifyFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.GiftFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.HomeFragment;

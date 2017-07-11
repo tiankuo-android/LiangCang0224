@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment;
 
 import android.util.Log;
 import android.view.View;

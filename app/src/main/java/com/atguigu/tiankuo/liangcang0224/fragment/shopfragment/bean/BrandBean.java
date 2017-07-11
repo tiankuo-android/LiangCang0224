@@ -1,5 +1,6 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/8 0008.
  */
 
-public class BrandBean {
+public class BrandBean implements Serializable {
 
     /**
      * meta : {"status":0,"server_time":"2017-07-08 10:14:22","account_id":0,"cost":0.0044529438018799,"errdata":null,"errmsg":""}
@@ -44,7 +45,7 @@ public class BrandBean {
         this.data = data;
     }
 
-    public static class MetaBean {
+    public static class MetaBean implements Serializable  {
         /**
          * status : 0
          * server_time : 2017-07-08 10:14:22
@@ -110,7 +111,7 @@ public class BrandBean {
         }
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable  {
         /**
          * has_more : true
          * num_items : 741
@@ -145,7 +146,7 @@ public class BrandBean {
             this.items = items;
         }
 
-        public static class ItemsBean {
+        public static class ItemsBean implements Serializable  {
             /**
              * brand_id : 846
              * brand_name : WHOOSH
