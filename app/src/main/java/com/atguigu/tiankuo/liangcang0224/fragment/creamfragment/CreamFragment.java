@@ -50,7 +50,7 @@ public class CreamFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        pagerAdapter = new CreamAdapter(getFragmentManager());
+        pagerAdapter = new CreamAdapter(getChildFragmentManager());
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);

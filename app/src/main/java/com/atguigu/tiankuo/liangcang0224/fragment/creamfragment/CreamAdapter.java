@@ -2,7 +2,7 @@ package com.atguigu.tiankuo.liangcang0224.fragment.creamfragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.fragment.EpisodeFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.creamfragment.fragment.RecommendFragment;
@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/7 0007.
  */
 
-public class CreamAdapter extends FragmentPagerAdapter {
+public class CreamAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> fragmentList;
     private String[] titles = new String[]{"推荐", "段子"};

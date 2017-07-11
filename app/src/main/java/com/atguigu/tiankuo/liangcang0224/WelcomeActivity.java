@@ -73,28 +73,5 @@ public class WelcomeActivity extends AppCompatActivity {
                     }
                 }) //仅仅加载一次gif动画
                 .into(new GlideDrawableImageViewTarget(welcomeIv, 1));
-
-
-//        AlphaAnimation aa = new AlphaAnimation(0, 1);
-//        aa.setDuration(1000);
-//        aa.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-//        welcomeIv.startAnimation(aa);
     }
 }

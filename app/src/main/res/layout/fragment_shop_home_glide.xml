@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:clickable="true">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/iv_shop_glide1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg_item"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%" />
+    <ImageView
+        android:id="@+id/iv_shop_glide2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_toRightOf="@id/iv_shop_glide1"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg_item"
+        app:layout_heightPercent="60%"
+        app:layout_widthPercent="50%" />
+    <ImageView
+        android:id="@+id/iv_shop_glide3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/iv_shop_glide1"
+        android:src="@drawable/bg_item"
+        app:layout_heightPercent="60%"
+        app:layout_widthPercent="50%" />
+    <ImageView
+        android:id="@+id/iv_shop_glide4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/iv_shop_glide2"
+        android:layout_toRightOf="@id/iv_shop_glide1"
+        android:src="@drawable/bg_item"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%" />
+
+
+</android.support.percent.PercentRelativeLayout>
