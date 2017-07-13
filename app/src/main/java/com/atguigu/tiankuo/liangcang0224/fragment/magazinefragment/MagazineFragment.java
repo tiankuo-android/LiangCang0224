@@ -1,5 +1,7 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment;
 
+import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,12 @@ import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -45,8 +53,8 @@ public class MagazineFragment extends BaseFragment {
     @InjectView(R.id.ll_title)
     LinearLayout llTitle;
     private String url;
+    private ArrayList<MagazineBean> listMaga;
     private MagazineAdapter adapter;
-    private MagazineBean datas;
 
     @Override
     public View initView() {
@@ -60,10 +68,12 @@ public class MagazineFragment extends BaseFragment {
     @Override
     public void initListener() {
         super.initListener();
+
         llTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(mContext,EnizagamActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -91,8 +101,45 @@ public class MagazineFragment extends BaseFragment {
     }
 
     private void processData(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONObject data = jsonObject.getJSONObject("data");
+            JSONObject items = data.getJSONObject("items");
+            JSONArray keys = items.getJSONArray("keys");
 
+            listMaga = new ArrayList();
+            JSONObject infos = items.getJSONObject("infos");
+
+            for (int i = 0; i < keys.length(); i++) {
+                String key = keys.getString(i);
+                JSONArray key2 = infos.getJSONArray(key);
+                for (int i1 = 0; i1 < key2.length(); i1++) {
+                    MagazineBean bean = new MagazineBean();
+                    JSONObject info = key2.getJSONObject(i1);
+
+                    String name = info.getString("topic_name");
+                    bean.setTopic_name(name);
+                    Log.e("TAG", "name===========" + name);
+
+                    String catname = info.getString("cat_name");
+                    bean.setCat_name(catname);
+
+                    String cover = info.getString("cover_img");
+                    bean.setCover_img(cover);
+
+                    bean.setTopic_url(info.getString("topic_url"));
+                    bean.setAddtime(info.getString("addtime").substring(5, 10));
+                    listMaga.add(bean);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        adapter = new MagazineAdapter(mContext,listMaga);
+        recyclerview.setAdapter(adapter);
+        recyclerview.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
     }
+
 
     @Override
     public void onDestroyView() {

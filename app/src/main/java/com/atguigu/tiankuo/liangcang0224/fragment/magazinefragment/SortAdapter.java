@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -19,49 +19,42 @@ import butterknife.InjectView;
 /**
  * 作者：田阔
  * 邮箱：1226147264@qq.com
- * Created by Administrator on 2017/7/11 0011.
+ * Created by Administrator on 2017/7/13 0013.
  */
 
-public class MagazineAdapter extends RecyclerView.Adapter<MagazineAdapter.MyViewHolder> {
-
-    private final ArrayList<MagazineBean> datas;
+public class SortAdapter extends RecyclerView.Adapter<SortAdapter.MyViewHolder> {
+    private final List<SortBean.DataBean.ItemsBean> datas;
     private final Context context;
 
-    public MagazineAdapter(Context mContext, ArrayList<MagazineBean> listMaga) {
+    public SortAdapter(Context mContext, List<SortBean.DataBean.ItemsBean> datas) {
         this.context = mContext;
-        this.datas = listMaga;
+        this.datas = datas;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_magazine_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_magazine_sort, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        holder.tvSort.setText(datas.get(position).getCat_name());
         Glide.with(context)
-                .load(datas.get(position).getCover_img())
-                .into(holder.ivMagazine);
-        holder.tvWord.setText(datas.get(position).getTopic_name());
-        holder.tvType.setText(datas.get(position).getCat_name());
-        holder.tvMonth.setText(datas.get(position).getAddtime());
+                .load(datas.get(position).getThumb())
+                .into(holder.ivSort);
     }
 
     @Override
     public int getItemCount() {
-        return datas == null ? 0:datas.size();
+        return datas == null ? 0 : datas.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        @InjectView(R.id.iv_magazine)
-        ImageView ivMagazine;
-        @InjectView(R.id.tv_word)
-        TextView tvWord;
-        @InjectView(R.id.tv_type)
-        TextView tvType;
-        @InjectView(R.id.tv_month)
-        TextView tvMonth;
+        @InjectView(R.id.iv_sort)
+        ImageView ivSort;
+        @InjectView(R.id.tv_sort)
+        TextView tvSort;
 
         public MyViewHolder(View itemView) {
             super(itemView);

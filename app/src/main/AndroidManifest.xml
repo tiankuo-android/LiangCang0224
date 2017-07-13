@@ -27,7 +27,8 @@
         <activity android:name=".fragment.shopfragment.StoreActivity" />
         <activity android:name=".fragment.shopfragment.AgoraActivity" />
         <activity android:name=".fragment.shopfragment.fragment.specialfragment.SubjectActivity" />
-        <activity android:name=".fragment.shopfragment.fragment.homefragment.HomeActivity"></activity>
+        <activity android:name=".fragment.shopfragment.fragment.homefragment.HomeActivity" />
+        <activity android:name=".fragment.magazinefragment.EnizagamActivity"></activity>
     </application>
 
 </manifest>

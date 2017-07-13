@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_enizagam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.EnizagamActivity">
+
+    <RadioGroup
+        android:id="@+id/rg_enizagam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundchecked"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/btn_sort"
+            style="@style/DarenButtonStyle"
+            android:background="@color/background_magazine"
+            android:checked="true"
+            android:text="分类"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/btn_author"
+            style="@style/DarenButtonStyle"
+            android:background="@color/background_magazine"
+            android:text="作者"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <include layout="@layout/title_bar" />
+</LinearLayout>

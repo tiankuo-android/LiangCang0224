@@ -8,4 +8,6 @@
     <color name="backgroundunchecked">#ffffff</color>
 
     <color name="transparent_background">#40000000</color>
+
+    <color name="background_magazine">#11000000</color>
 </resources>

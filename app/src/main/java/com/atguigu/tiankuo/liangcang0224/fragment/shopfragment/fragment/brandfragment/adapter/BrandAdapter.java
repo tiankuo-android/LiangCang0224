@@ -2,7 +2,6 @@ package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfr
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -66,8 +65,6 @@ public class BrandAdapter extends BaseAdapter {
         Glide.with(context)
                 .load(imageView)
                 .into(viewHolder.ivHead);
-
-        Log.e("TAG","Brand_Id ==" + datas.get(position).getBrand_id());
 
         viewHolder.llItem.setOnClickListener(new View.OnClickListener() {
             @Override
