@@ -3,6 +3,7 @@
     package="com.atguigu.tiankuo.liangcang0224">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -21,7 +22,12 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".fragment.creamfragment.ShowImageAndGifActivity" />
         <activity android:name=".fragment.shopfragment.fragment.brandfragment.BrandProductActivity" />
-        <activity android:name=".fragment.darenfragment.DetailsDarenActivity"></activity>
+        <activity android:name=".fragment.darenfragment.DetailsDarenActivity" />
+        <activity android:name=".fragment.shopfragment.GoodsActivity" />
+        <activity android:name=".fragment.shopfragment.StoreActivity" />
+        <activity android:name=".fragment.shopfragment.AgoraActivity" />
+        <activity android:name=".fragment.shopfragment.fragment.specialfragment.SubjectActivity" />
+        <activity android:name=".fragment.shopfragment.fragment.homefragment.HomeActivity"></activity>
     </application>
 
 </manifest>

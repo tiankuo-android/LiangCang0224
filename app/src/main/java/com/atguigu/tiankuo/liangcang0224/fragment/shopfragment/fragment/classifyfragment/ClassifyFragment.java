@@ -1,14 +1,14 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.classifyfragment;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.HomeAdapter;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.HomeBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.classifyfragment.adapter.ClassifyAdapter;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.ClassifyBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -25,17 +25,16 @@ import okhttp3.Call;
  * Created by Administrator on 2017/7/8 0008.
  */
 
-public class HomeFragment extends BaseFragment {
-
+public class ClassifyFragment extends BaseFragment {
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
     private String url;
-    private List<HomeBean.DataBean.ItemsBean.ListBeanX> datas;
-    private HomeAdapter adapter;
+    private List<ClassifyBean.DataBean.ItemsBean> datas;
+    private ClassifyAdapter adapter;
 
     @Override
     public View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_shop_main, null);
+        View view = View.inflate(mContext, R.layout.fragment_shop_classify, null);
         ButterKnife.inject(this, view);
         return view;
     }
@@ -43,7 +42,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        url = "http://mobile.iliangcang.com/goods/newShopHome?app_key=Android&sig=3780CB0808528F7CE99081D295EE8C0F%7C116941220826768&uid=626138098&user_token=0516ed9429352c8e1e3bd11c63ba6f54&v=1.0";
+        url = "http://mobile.iliangcang.com/goods/goodsCategory?app_key=Android&sig=430BD99E6C913B8B8C3ED109737ECF15%7C830952120106768&v=1.0";
         getDataFromNet(url);
     }
 
@@ -51,27 +50,28 @@ public class HomeFragment extends BaseFragment {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG","请求失败==shop_home");
+                Log.e("TAG", "请求失败==Classify");
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("TAG","请求成功==shop_home");
+                Log.e("TAG", "请求成功==Classify");
                 processData(response);
             }
         });
     }
 
     private void processData(String response) {
-        HomeBean homeBean = new Gson().fromJson(response,HomeBean.class);
-        datas = homeBean.getData().getItems().getList();
-
-        if(datas != null && datas.size() > 0) {
-            adapter = new HomeAdapter(mContext,datas);
+        ClassifyBean classifyBean = new Gson().fromJson(response,ClassifyBean.class);
+        datas = classifyBean.getData().getItems();
+        if (datas != null && datas.size() > 0) {
+            //有数据
+            adapter = new ClassifyAdapter(getActivity(), datas);
             recyclerview.setAdapter(adapter);
-            recyclerview.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        }else{
-            Log.e("TAG","数据解析不成功==shop_home");
+            recyclerview.setLayoutManager(new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false));
+        } else {
+            //没有数据
+            Log.e("TAG", "没有数据==Classify");
         }
     }
 

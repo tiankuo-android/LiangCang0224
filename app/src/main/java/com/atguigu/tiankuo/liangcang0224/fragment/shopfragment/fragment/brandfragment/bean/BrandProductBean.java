@@ -1,5 +1,6 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/11 0011.
  */
 
-public class BrandProductBean {
+public class BrandProductBean implements Serializable {
 
     /**
      * meta : {"status":0,"server_time":"2017-07-11 21:38:35","account_id":0,"cost":0.011379003524780273,"errdata":null,"errmsg":""}
@@ -44,7 +45,7 @@ public class BrandProductBean {
         this.data = data;
     }
 
-    public static class MetaBean {
+    public static class MetaBean implements Serializable {
         /**
          * status : 0
          * server_time : 2017-07-11 21:38:35
@@ -110,7 +111,7 @@ public class BrandProductBean {
         }
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * has_more : false
          * num_items : 1
@@ -145,7 +146,7 @@ public class BrandProductBean {
             this.items = items;
         }
 
-        public static class ItemsBean {
+        public static class ItemsBean implements Serializable {
             /**
              * goods_id : 258355
              * goods_image : http://imgs-qn.iliangcang.com/ware/goods/big/2/258/258355.jpg?t=1499424401
@@ -310,7 +311,7 @@ public class BrandProductBean {
                 this.shop_price = shop_price;
             }
 
-            public static class BrandInfoBean {
+            public static class BrandInfoBean implements Serializable {
                 /**
                  * brand_id : 845
                  * brand_name : 富信

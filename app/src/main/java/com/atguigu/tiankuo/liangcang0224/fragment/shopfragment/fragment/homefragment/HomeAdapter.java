@@ -1,6 +1,7 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.homefragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -69,16 +70,17 @@ public class HomeAdapter extends RecyclerView.Adapter {
             return TYPE_LINEA;
         } else if (type == 2) {
             return TYPE_LISTV;
-        }
-        ;
+        };
         return super.getItemViewType(position);
     }
+
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Log.e("TAG", "position == " + position);
         if (getItemViewType(position) == TYPE_IMAGE) {
             ImageViewHolder imageViewHolder = (ImageViewHolder) holder;
+
             imageViewHolder.setData(datas.get(position).getList(),position);
 
         } else if (getItemViewType(position) == TYPE_GLIDE) {
@@ -92,14 +94,15 @@ public class HomeAdapter extends RecyclerView.Adapter {
         } else if (getItemViewType(position) == TYPE_LINEA) {
 
             LineaViewHolder lineaViewHolder = (LineaViewHolder) holder;
+
             lineaViewHolder.setData(datas.get(position).getOne(),position);
 
         } else if (getItemViewType(position) == TYPE_LISTV) {
 
             ListyViewHolder listyViewHolder = (ListyViewHolder) holder;
+
             listyViewHolder.setData1(datas.get(position).getOne(), position);
             listyViewHolder.setData2(datas.get(position).getTwo(), position);
-
         }
     }
 
@@ -113,20 +116,30 @@ public class HomeAdapter extends RecyclerView.Adapter {
         @InjectView(R.id.iv_shop_image)
         ImageView ivShopImage;
 
-        public ImageViewHolder(Context context, View itemView) {
+        public ImageViewHolder(final Context context, View itemView) {
             super(itemView);
             this.context = context;
             ButterKnife.inject(this, itemView);
         }
 
 
-        public void setData(List<HomeBean.DataBean.ItemsBean.ListBeanX.ListBean> listdata, int position) {
+        public void setData(final List<HomeBean.DataBean.ItemsBean.ListBeanX.ListBean> listdata, final int position) {
             //使用Glide加载图片
             Glide.with(context)
                     .load(listdata.get(position).getPic_url())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .crossFade() //设置淡入淡出效果，默认300ms，可以传参
                     .into(ivShopImage);
+
+            ivShopImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",listdata.get(position).getTopic_url());
+                    intent.putExtra("named",listdata.get(position).getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -147,20 +160,56 @@ public class HomeAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, inflate);
         }
 
-        public void setData1(HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
+        public void setData1(final HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
             Glide.with(context).load(one.getPic_url()).into(ivShopGlide1);
+            ivShopGlide1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",one.getTopic_url());
+                    intent.putExtra("named",one.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
 
-        public void setData2(HomeBean.DataBean.ItemsBean.ListBeanX.TwoBean two, int position) {
+        public void setData2(final HomeBean.DataBean.ItemsBean.ListBeanX.TwoBean two, int position) {
             Glide.with(context).load(two.getPic_url()).into(ivShopGlide2);
+            ivShopGlide2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url", two.getTopic_url());
+                    intent.putExtra("named",two.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
 
-        public void setData3(HomeBean.DataBean.ItemsBean.ListBeanX.ThreeBean three, int position) {
+        public void setData3(final HomeBean.DataBean.ItemsBean.ListBeanX.ThreeBean three, int position) {
             Glide.with(context).load(three.getPic_url()).into(ivShopGlide3);
+            ivShopGlide3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",three.getTopic_url());
+                    intent.putExtra("named",three.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
 
-        public void setData4(HomeBean.DataBean.ItemsBean.ListBeanX.FourBean four, int position) {
+        public void setData4(final HomeBean.DataBean.ItemsBean.ListBeanX.FourBean four, int position) {
             Glide.with(context).load(four.getPic_url()).into(ivShopGlide4);
+            ivShopGlide4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",four.getTopic_url());
+                    intent.putExtra("named",four.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -176,8 +225,17 @@ public class HomeAdapter extends RecyclerView.Adapter {
         }
 
 
-        public void setData(HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
+        public void setData(final HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
             Glide.with(context).load(one.getPic_url()).into(ivShopLinea);
+            ivShopLinea.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",one.getTopic_url());
+                    intent.putExtra("named",one.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -194,12 +252,31 @@ public class HomeAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, inflate);
         }
 
-        public void setData1(HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
+        public void setData1(final HomeBean.DataBean.ItemsBean.ListBeanX.OneBean one, int position) {
+
             Glide.with(context).load(one.getPic_url()).into(ivList1);
+            ivList1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",one.getTopic_url());
+                    intent.putExtra("named",one.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
 
-        public void setData2(HomeBean.DataBean.ItemsBean.ListBeanX.TwoBean two, int position) {
+        public void setData2(final HomeBean.DataBean.ItemsBean.ListBeanX.TwoBean two, int position) {
             Glide.with(context).load(two.getPic_url()).into(ivList2);
+            ivList2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,HomeActivity.class);
+                    intent.putExtra("url",two.getTopic_url());
+                    intent.putExtra("named",two.getTopic_name());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

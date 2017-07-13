@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.BrandProductActivity;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.bean.BrandBean;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

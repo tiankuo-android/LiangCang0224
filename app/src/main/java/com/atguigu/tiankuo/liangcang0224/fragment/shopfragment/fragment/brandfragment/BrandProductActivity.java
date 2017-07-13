@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.bean.BrandBean;
 import com.atguigu.tiankuo.liangcang0224.utils.UrlUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
@@ -95,7 +95,7 @@ public class BrandProductActivity extends AppCompatActivity {
                 finish();
             }
         });
-        
+
         rgBrand.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -109,12 +109,12 @@ public class BrandProductActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         hidden(transaction);
         switch (checkedId) {
-            case R.id.btn_story :
+            case R.id.btn_story:
                 if (storyFragment == null) {
                     storyFragment = new StoryFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("brand",brand);//这里的values就是我们要传的值
+                    bundle.putString("brand", brand);//这里的values就是我们要传的值
                     storyFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, storyFragment);
@@ -122,13 +122,13 @@ public class BrandProductActivity extends AppCompatActivity {
                     transaction.show(storyFragment);
                 }
                 break;
-            case R.id.btn_product :
+            case R.id.btn_product:
                 if (goodsFragment == null) {
                     goodsFragment = new GoodsFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("position",position + "");
-                    bundle.putString("band",brand);//这里的values就是我们要传的值
+                    bundle.putString("position", position + "");
+                    bundle.putString("band", brand);//这里的values就是我们要传的值
                     goodsFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, goodsFragment);

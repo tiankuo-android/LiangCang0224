@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
@@ -39,6 +40,10 @@ public class MagazineFragment extends BaseFragment {
     ImageView ivBack;
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
+    @InjectView(R.id.tv_date)
+    TextView tvDate;
+    @InjectView(R.id.ll_title)
+    LinearLayout llTitle;
     private String url;
     private MagazineAdapter adapter;
     private MagazineBean datas;
@@ -47,9 +52,20 @@ public class MagazineFragment extends BaseFragment {
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragment_magazine, null);
         ButterKnife.inject(this, view);
-        ivSearch.setVisibility(View.VISIBLE);
+        tvDate.setVisibility(View.VISIBLE);
         tvFragment.setText("杂志");
         return view;
+    }
+
+    @Override
+    public void initListener() {
+        super.initListener();
+        llTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

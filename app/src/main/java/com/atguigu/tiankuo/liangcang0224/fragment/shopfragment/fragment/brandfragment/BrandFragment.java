@@ -7,8 +7,8 @@ import android.widget.ListView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.BrandAdapter;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.adapter.BrandAdapter;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.bean.BrandBean;
 import com.atguigu.tiankuo.liangcang0224.utils.UrlUtils;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;

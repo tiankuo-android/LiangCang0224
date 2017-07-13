@@ -1,6 +1,7 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.classifyfragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.ClassifyBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.StoreActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -40,11 +42,20 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        ClassifyBean.DataBean.ItemsBean classifyBean = datas.get(position);
+        final ClassifyBean.DataBean.ItemsBean classifyBean = datas.get(position);
         String imageUrl = classifyBean.getCover_img();
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.ivClassify);
+
+        holder.ivClassify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,StoreActivity.class);
+                intent.putExtra("classify" , classifyBean.getCat_id());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

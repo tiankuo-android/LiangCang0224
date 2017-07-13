@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.ShopAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

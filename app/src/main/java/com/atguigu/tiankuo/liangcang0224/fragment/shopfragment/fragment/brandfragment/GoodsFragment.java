@@ -9,7 +9,8 @@ import android.view.View;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandProductBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.adapter.BrandGoodsAdapter;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.bean.BrandProductBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -30,7 +31,6 @@ public class GoodsFragment extends BaseFragment {
     RecyclerView recyclerview;
     private String brand;
     private String url;
-    private int position;
     private List<BrandProductBean.DataBean.ItemsBean> datas;
 
     @Override
@@ -40,7 +40,6 @@ public class GoodsFragment extends BaseFragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             brand = bundle.getString("brand");
-            position = Integer.parseInt(bundle.getString("position"));
             Log.e("TAG", "brand==" + brand);
         }
         return view;

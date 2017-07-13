@@ -2,7 +2,6 @@ package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.bumptech.glide.Glide;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,6 +23,7 @@ public class MagazineAdapter extends RecyclerView.Adapter<MagazineAdapter.MyView
 
     private final Context context;
     private final MagazineBean datas;
+    private MagazineBean.DataBean.ItemsBean magazineBean;
 
     public MagazineAdapter(Context mContext, MagazineBean datas) {
         this.context = mContext;
@@ -39,14 +38,9 @@ public class MagazineAdapter extends RecyclerView.Adapter<MagazineAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        MagazineBean magazineBean = datas;
-        Log.e("TAG","magazine数据" + magazineBean.getCat_name());
+        magazineBean = datas.getData().getItems();
 
-        holder.tvWord.setText(magazineBean.getTopic_name());
-        holder.tvType.setText(magazineBean.getCat_name());
-        holder.tvMonth.setText((CharSequence) magazineBean);
 
-        Glide.with(context).load(magazineBean.getCover_img()).into(holder.ivMagazine);
     }
 
     @Override

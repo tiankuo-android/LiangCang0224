@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.homefragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,7 @@ import android.view.View;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.SpecialAdapter;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.SpecialBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.HomeBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -25,16 +24,17 @@ import okhttp3.Call;
  * Created by Administrator on 2017/7/8 0008.
  */
 
-public class SpecialFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
+
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
     private String url;
-    private List<SpecialBean.DataBean.ItemsBean> datas;
-    private SpecialAdapter adapter;
+    private List<HomeBean.DataBean.ItemsBean.ListBeanX> datas;
+    private HomeAdapter adapter;
 
     @Override
     public View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_shop_special, null);
+        View view = View.inflate(mContext, R.layout.fragment_shop_main, null);
         ButterKnife.inject(this, view);
         return view;
     }
@@ -42,7 +42,7 @@ public class SpecialFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        url = "http://mobile.iliangcang.com/goods/shopSpecial?app_key=Android&count=10&page=1&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&v=1.0";
+        url = "http://mobile.iliangcang.com/goods/newShopHome?app_key=Android&sig=3780CB0808528F7CE99081D295EE8C0F%7C116941220826768&uid=626138098&user_token=0516ed9429352c8e1e3bd11c63ba6f54&v=1.0";
         getDataFromNet(url);
     }
 
@@ -50,29 +50,27 @@ public class SpecialFragment extends BaseFragment {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG","请求失败==Special");
+                Log.e("TAG","请求失败==shop_home");
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("TAG","请求成功==Special");
+                Log.e("TAG","请求成功==shop_home");
                 processData(response);
             }
         });
     }
 
     private void processData(String response) {
-        SpecialBean itemsBean = new Gson().fromJson(response,SpecialBean.class);
-        Log.e("TAG","数据==Special==" + itemsBean);
-        datas = itemsBean.getData().getItems();
-        if (datas != null && datas.size() > 0) {
-            //有数据
-            adapter = new SpecialAdapter(mContext, datas);
+        HomeBean homeBean = new Gson().fromJson(response,HomeBean.class);
+        datas = homeBean.getData().getItems().getList();
+
+        if(datas != null && datas.size() > 0) {
+            adapter = new HomeAdapter(mContext,datas);
             recyclerview.setAdapter(adapter);
             recyclerview.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        } else {
-            //没有数据
-            Log.e("TAG", "没有数据==Special");
+        }else{
+            Log.e("TAG","数据解析不成功==shop_home");
         }
     }
 

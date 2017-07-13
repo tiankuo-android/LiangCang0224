@@ -1,14 +1,14 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment.BrandFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.ClassifyFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.GiftFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.HomeFragment;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.SpecialFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.classifyfragment.ClassifyFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.giftfragment.GiftFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.homefragment.HomeFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.specialfragment.SpecialFragment;
 
 import java.util.ArrayList;
 import java.util.List;

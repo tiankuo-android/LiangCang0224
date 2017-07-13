@@ -1,15 +1,17 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.fragment.brandfragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.BrandProductBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.StoreActivity;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.StoreBean;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -20,16 +22,15 @@ import butterknife.InjectView;
 /**
  * 作者：田阔
  * 邮箱：1226147264@qq.com
- * Created by Administrator on 2017/7/11 0011.
+ * Created by Administrator on 2017/7/12 0012.
  */
 
-public class BrandGoodsAdapter extends RecyclerView.Adapter<BrandGoodsAdapter.MyViewHolder> {
-    private final List<BrandProductBean.DataBean.ItemsBean> datas;
-    private final Context context;
+public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.MyViewHolder> {
+    private final List<StoreBean.DataBean.ItemsBean> datas;
+    private final StoreActivity context;
 
-
-    public BrandGoodsAdapter(Context mContext, List<BrandProductBean.DataBean.ItemsBean> datas) {
-        this.context = mContext;
+    public StoreAdapter(StoreActivity storeActivity, List<StoreBean.DataBean.ItemsBean> datas) {
+        this.context = storeActivity;
         this.datas = datas;
     }
 
@@ -41,9 +42,10 @@ public class BrandGoodsAdapter extends RecyclerView.Adapter<BrandGoodsAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        BrandProductBean.DataBean.ItemsBean bean = datas.get(position);
+        StoreBean.DataBean.ItemsBean bean = datas.get(position);
 
         holder.tvGoods.setText(bean.getGoods_name());
+        Log.e("TAG","商店数据==" + bean.getGoods_name());
         holder.tvCompany.setText(bean.getBrand_info().getBrand_name());
         holder.tvPrice.setText(bean.getPrice());
         holder.tvPutup.setText(bean.getLike_count());
@@ -51,6 +53,7 @@ public class BrandGoodsAdapter extends RecyclerView.Adapter<BrandGoodsAdapter.My
                 .load(bean.getGoods_image())
                 .into(holder.ivShopBrandGoods);
     }
+
 
     @Override
     public int getItemCount() {
@@ -70,9 +73,11 @@ public class BrandGoodsAdapter extends RecyclerView.Adapter<BrandGoodsAdapter.My
         ImageView ivPutup;
         @InjectView(R.id.tv_putup)
         TextView tvPutup;
+        @InjectView(R.id.ll_item_goods)
+        LinearLayout llItemGoods;
         public MyViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.inject(this, itemView);
         }
     }
 }
