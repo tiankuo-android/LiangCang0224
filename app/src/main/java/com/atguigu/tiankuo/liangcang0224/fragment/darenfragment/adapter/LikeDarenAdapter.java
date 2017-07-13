@@ -1,13 +1,16 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.GoodsDarenActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.DetailsDarenBean;
 import com.bumptech.glide.Glide;
 
@@ -27,6 +30,7 @@ public class LikeDarenAdapter extends RecyclerView.Adapter<LikeDarenAdapter.MyVi
     private final Context context;
 
 
+
     public LikeDarenAdapter(Context context, List<DetailsDarenBean.DataBean.ItemsBean.GoodsBean> datas) {
         this.context = context;
         this.datas = datas;
@@ -39,13 +43,22 @@ public class LikeDarenAdapter extends RecyclerView.Adapter<LikeDarenAdapter.MyVi
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         String imageUrl = datas.get(position).getGoods_image();
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.ivDarenLike);
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,GoodsDarenActivity.class);
+                intent.putExtra("goodid",datas.get(position).getGoods_id());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -56,10 +69,12 @@ public class LikeDarenAdapter extends RecyclerView.Adapter<LikeDarenAdapter.MyVi
     class MyViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.iv_daren_like)
         ImageView ivDarenLike;
+        @InjectView(R.id.ll_item)
+        LinearLayout llItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.inject(this, itemView);
         }
     }
 }

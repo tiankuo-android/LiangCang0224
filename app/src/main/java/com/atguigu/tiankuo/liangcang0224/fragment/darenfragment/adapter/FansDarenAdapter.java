@@ -1,5 +1,6 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.adapter;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.DetailsDarenActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.FansDarenBean;
 import com.bumptech.glide.Glide;
 
@@ -41,7 +43,7 @@ public class FansDarenAdapter extends RecyclerView.Adapter<FansDarenAdapter.MyVi
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.tvItemName.setText(datas.get(position).getUser_name());
         holder.tvItemJob.setText(datas.get(position).getUser_desc());
@@ -49,6 +51,16 @@ public class FansDarenAdapter extends RecyclerView.Adapter<FansDarenAdapter.MyVi
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.ivItemDarenFans);
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailsDarenActivity.class);
+                intent.putExtra("user_id",datas.get(position).getUser_id());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
