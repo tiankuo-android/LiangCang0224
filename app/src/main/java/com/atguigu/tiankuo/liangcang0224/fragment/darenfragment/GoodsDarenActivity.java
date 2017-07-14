@@ -3,6 +3,7 @@ package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.adapter.GoodsDarenAdapter;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.GoodsDarenBean;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -21,6 +23,7 @@ import butterknife.InjectView;
 import okhttp3.Call;
 
 public class GoodsDarenActivity extends AppCompatActivity {
+
 
     @InjectView(R.id.iv_goods_daren)
     ImageView ivGoodsDaren;
@@ -36,26 +39,8 @@ public class GoodsDarenActivity extends AppCompatActivity {
     ImageView ivGoodsDarenAuthor;
     @InjectView(R.id.tv_goods_daren_author)
     TextView tvGoodsDarenAuthor;
-    @InjectView(R.id.iv_goods_daren_first)
-    ImageView ivGoodsDarenFirst;
-    @InjectView(R.id.tv_goods_daren_first_name)
-    TextView tvGoodsDarenFirstName;
-    @InjectView(R.id.tv_goods_daren_first_content)
-    TextView tvGoodsDarenFirstContent;
-    @InjectView(R.id.tv_goods_daren_first_date)
-    TextView tvGoodsDarenFirstDate;
-    @InjectView(R.id.tv_goods_daren_first_huifu)
-    TextView tvGoodsDarenFirstHuifu;
-    @InjectView(R.id.iv_goods_daren_second)
-    ImageView ivGoodsDarenSecond;
-    @InjectView(R.id.tv_goods_daren_second_name)
-    TextView tvGoodsDarenSecondName;
-    @InjectView(R.id.tv_goods_daren_second_content)
-    TextView tvGoodsDarenSecondContent;
-    @InjectView(R.id.tv_goods_daren_second_date)
-    TextView tvGoodsDarenSecondDate;
-    @InjectView(R.id.tv_goods_daren_second_huifu)
-    TextView tvGoodsDarenSecondHuifu;
+    @InjectView(R.id.recyclerview)
+    RecyclerView recyclerview;
     @InjectView(R.id.activity_goods_daren)
     LinearLayout activityGoodsDaren;
     private String url;
@@ -85,19 +70,19 @@ public class GoodsDarenActivity extends AppCompatActivity {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG","联网失败==goodsdaren");
+                Log.e("TAG", "联网失败==goodsdaren");
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("TAG","联网成功==goodsdaren");
+                Log.e("TAG", "联网成功==goodsdaren");
                 processData(response);
             }
         });
     }
 
     private void processData(String response) {
-        GoodsDarenBean bean = new Gson().fromJson(response,GoodsDarenBean.class);
+        GoodsDarenBean bean = new Gson().fromJson(response, GoodsDarenBean.class);
         datas = bean.getData().getItems();
 
         Glide.with(this).load(datas.getGoods_image()).into(ivGoodsDaren);
@@ -110,6 +95,11 @@ public class GoodsDarenActivity extends AppCompatActivity {
         Glide.with(this).load(datas.getHeadimg()).into(ivGoodsDarenAuthor);
         tvGoodsDarenAuthor.setText(datas.getOwner_name());
 
+        if (datas != null) {
+
+            GoodsDarenAdapter adapter = new GoodsDarenAdapter(GoodsDarenActivity.this,datas);
+            recyclerview.setAdapter(adapter);
+        }
     }
 
     private void initListener() {

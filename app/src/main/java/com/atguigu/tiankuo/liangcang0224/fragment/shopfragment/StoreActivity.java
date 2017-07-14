@@ -49,6 +49,8 @@ public class StoreActivity extends AppCompatActivity {
     private List<StoreBean.DataBean.ItemsBean> datas;
     private StoreAdapter adapter;
 
+    private int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +62,7 @@ public class StoreActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         catid = intent.getStringExtra("classify");
-        Log.e("TAG","传入数据store==" + catid);
+        Log.e("TAG", "传入数据store==" + catid);
         initData();
         initListener();
     }
@@ -75,8 +77,15 @@ public class StoreActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        url = "http://mobile.iliangcang.com/goods/goodsShare?app_key=Android&cat_code=00"
-              + catid + "&count=10&coverId=1&page=1&sig=6E1DEF1DAFF84909ECD98F32FE6CDAD5%7C536890620070968&v=1.0";
+
+        id = Integer.parseInt(catid);
+        if (id < 100) {
+            url = "http://mobile.iliangcang.com/goods/goodsShare?app_key=Android&cat_code=00"
+                    + catid + "&count=10&coverId=1&page=1&sig=6E1DEF1DAFF84909ECD98F32FE6CDAD5%7C536890620070968&v=1.0";
+        }else{
+            url = "http://mobile.iliangcang.com/goods/goodsShare?app_key=Android&cat_code=0"
+                    + catid + "&count=10&coverId=1&page=1&sig=6E1DEF1DAFF84909ECD98F32FE6CDAD5%7C536890620070968&v=1.0";
+        }
         getDataFromNet(url);
     }
 
@@ -84,27 +93,27 @@ public class StoreActivity extends AppCompatActivity {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.e("TAG","联网失败==store");
+                Log.e("TAG", "联网失败==store");
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("TAG","联网成功==store");
+                Log.e("TAG", "联网成功==store");
                 processData(response);
             }
         });
     }
 
     private void processData(String response) {
-        StoreBean storeBean = new Gson().fromJson(response,StoreBean.class);
+        StoreBean storeBean = new Gson().fromJson(response, StoreBean.class);
         datas = storeBean.getData().getItems();
 
-        if(datas != null && datas.size() > 0) {
-            adapter = new StoreAdapter(StoreActivity.this,datas);
+        if (datas != null && datas.size() > 0) {
+            adapter = new StoreAdapter(StoreActivity.this, datas);
             recyclerview.setAdapter(adapter);
-            recyclerview.setLayoutManager(new GridLayoutManager(StoreActivity.this,2,GridLayoutManager.VERTICAL,false));
-        }else{
-            Log.e("TAG","没有获得数据==store");
+            recyclerview.setLayoutManager(new GridLayoutManager(StoreActivity.this, 2, GridLayoutManager.VERTICAL, false));
+        } else {
+            Log.e("TAG", "没有获得数据==store");
         }
     }
 
