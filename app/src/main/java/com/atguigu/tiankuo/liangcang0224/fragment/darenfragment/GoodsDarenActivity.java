@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.adapter.GoodsDarenAdapter;
 import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.GoodsDarenBean;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -106,11 +105,7 @@ public class GoodsDarenActivity extends AppCompatActivity {
         Glide.with(this).load(datas.getHeadimg()).into(ivGoodsDarenAuthor);
         tvGoodsDarenAuthor.setText(datas.getOwner_name());
 
-        if (datas != null) {
 
-            GoodsDarenAdapter adapter = new GoodsDarenAdapter(GoodsDarenActivity.this, datas);
-            recyclerview.setAdapter(adapter);
-        }
     }
 
     private void initListener() {

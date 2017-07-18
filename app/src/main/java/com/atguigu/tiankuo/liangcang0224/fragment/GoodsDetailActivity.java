@@ -26,14 +26,18 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
     @InjectView(R.id.iv_goods_daren)
     ImageView ivGoodsDaren;
+    @InjectView(R.id.tv_goods_name)
+    TextView tvGoodsName;
+    @InjectView(R.id.iv_share)
+    ImageView ivShare;
     @InjectView(R.id.tv_goods_daren_name)
     TextView tvGoodsDarenName;
     @InjectView(R.id.iv_goods_daren_dianzan)
     ImageView ivGoodsDarenDianzan;
-    @InjectView(R.id.tv_goods_daren_price)
-    TextView tvGoodsDarenPrice;
     @InjectView(R.id.tv_goods_daren_dianzan)
     TextView tvGoodsDarenDianzan;
+    @InjectView(R.id.tv_goods_details_price)
+    TextView tvGoodsDetailsPrice;
     @InjectView(R.id.rb_goodsdetails)
     RadioButton rbGoodsdetails;
     @InjectView(R.id.rb_shopknow)
@@ -110,9 +114,14 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
         Glide.with(this).load(datas.getGoods_image()).into(ivGoodsDaren);
 
+        tvGoodsName.setText(datas.getBrand_info().getBrand_name());
         tvGoodsDarenName.setText(datas.getGoods_name());
 
-        tvGoodsDarenPrice.setText(datas.getPrice());
+        String privce = getResources().getString(R.string.goods_details_price);
+        String price = String.format(privce, datas.getPrice());
+        tvGoodsDetailsPrice.setText(price);
+
+
         tvGoodsDarenDianzan.setText(datas.getLike_count());
 
     }
@@ -127,6 +136,10 @@ public class GoodsDetailActivity extends AppCompatActivity {
                 if (goodsdetailsFragment == null) {
                     goodsdetailsFragment = new GoodsDetailsFragment();
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("goodsid",goodsid);//这里的values就是我们要传的值
+                    goodsdetailsFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, goodsdetailsFragment);
                 } else {
                     transaction.show(goodsdetailsFragment);
@@ -136,12 +149,17 @@ public class GoodsDetailActivity extends AppCompatActivity {
                 if (shopKnowFragment == null) {
                     shopKnowFragment = new ShopKnowFragment();
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("goodsid",goodsid);//这里的values就是我们要传的值
+                    shopKnowFragment.setArguments(bundle);
+
                     transaction.add(R.id.frameLayout, shopKnowFragment);
                 } else {
                     transaction.show(shopKnowFragment);
                 }
                 break;
         }
+        transaction.commit();
     }
 
     private void hidden(FragmentTransaction transaction) {

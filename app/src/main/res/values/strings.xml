@@ -7,4 +7,6 @@
 
     <string name="goods_price">¥%1$s</string>
     <string name="goods_depreciate">¥%1$s</string>
+
+    <string name="goods_details_price">¥%1$s</string>
 </resources>
