@@ -12,6 +12,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.fragment.AuthorFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.fragment.SortFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

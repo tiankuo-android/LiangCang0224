@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.adapter.MagazineAdapter;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean.MagazineBean;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -72,8 +74,15 @@ public class MagazineFragment extends BaseFragment {
         llTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /***
+                 * Intent mainIntent = new Intent(SplashScreen.this,   AndroidNews.class);
+                 SplashScreen.this.startActivity(mainIntent);
+                 SplashScreen.this.finish();
+                 overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                 */
                 Intent intent = new Intent(mContext,EnizagamActivity.class);
                 startActivity(intent);
+                
             }
         });
     }

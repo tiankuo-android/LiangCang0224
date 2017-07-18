@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean.AuthorBean;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 

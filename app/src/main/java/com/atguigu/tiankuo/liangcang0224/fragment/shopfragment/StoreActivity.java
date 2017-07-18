@@ -74,6 +74,13 @@ public class StoreActivity extends AppCompatActivity {
                 finish();
             }
         });
+        ivShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private void initData() {

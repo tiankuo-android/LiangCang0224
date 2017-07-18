@@ -4,6 +4,7 @@
     android:id="@+id/activity_goods"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.GoodsActivity">
 
         <RelativeLayout

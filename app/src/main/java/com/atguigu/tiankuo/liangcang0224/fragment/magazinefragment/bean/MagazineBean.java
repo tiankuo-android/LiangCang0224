@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean;
 
 /**
  * 作者：田阔

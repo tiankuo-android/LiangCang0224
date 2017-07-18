@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
@@ -43,6 +46,14 @@ public class GoodsDarenActivity extends AppCompatActivity {
     RecyclerView recyclerview;
     @InjectView(R.id.activity_goods_daren)
     LinearLayout activityGoodsDaren;
+    @InjectView(R.id.rb_goodsdetails)
+    RadioButton rbGoodsdetails;
+    @InjectView(R.id.rb_shopknow)
+    RadioButton rbShopknow;
+    @InjectView(R.id.rg_goods)
+    RadioGroup rgGoods;
+    @InjectView(R.id.frameLayout)
+    FrameLayout frameLayout;
     private String url;
     private GoodsDarenBean.DataBean.ItemsBean datas;
     private String goodid;
@@ -97,7 +108,7 @@ public class GoodsDarenActivity extends AppCompatActivity {
 
         if (datas != null) {
 
-            GoodsDarenAdapter adapter = new GoodsDarenAdapter(GoodsDarenActivity.this,datas);
+            GoodsDarenAdapter adapter = new GoodsDarenAdapter(GoodsDarenActivity.this, datas);
             recyclerview.setAdapter(adapter);
         }
     }
@@ -111,5 +122,7 @@ public class GoodsDarenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+
 }

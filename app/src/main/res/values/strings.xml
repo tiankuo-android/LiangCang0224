@@ -4,4 +4,7 @@
     <string name="count_recommend">推荐\n%1$s</string>
     <string name="count_attention">关注\n%1$s</string>
     <string name="count_fans">粉丝\n%1$s</string>
+
+    <string name="goods_price">¥%1$s</string>
+    <string name="goods_depreciate">¥%1$s</string>
 </resources>
