@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.inject(this);
 
-        SMSSDK.initSDK(RegisterActivity.this, "1f88046b6dde0", "18984c4e84844cd674edb07e57d68981");
+
 
         EventHandler eventHandler = new EventHandler() {
             @Override
