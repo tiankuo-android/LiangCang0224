@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.RegisterActivity;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -23,6 +25,7 @@ import butterknife.InjectView;
 import okhttp3.Call;
 
 public class GoodsDetailActivity extends AppCompatActivity {
+
 
     @InjectView(R.id.iv_goods_daren)
     ImageView ivGoodsDaren;
@@ -51,11 +54,9 @@ public class GoodsDetailActivity extends AppCompatActivity {
     @InjectView(R.id.iv_shop)
     ImageView ivShop;
     @InjectView(R.id.rb_shoping_goodsdetails)
-    RadioButton rbShopingGoodsdetails;
+    TextView rbShopingGoodsdetails;
     @InjectView(R.id.rb_shoping_shopknow)
-    RadioButton rbShopingShopknow;
-    @InjectView(R.id.rg_shoping_goods)
-    RadioGroup rgShopingGoods;
+    TextView rbShopingShopknow;
     @InjectView(R.id.activity_goods_detail)
     RelativeLayout activityGoodsDetail;
     private String url;
@@ -85,6 +86,15 @@ public class GoodsDetailActivity extends AppCompatActivity {
             }
         });
         switchFragment(R.id.rb_goodsdetails);
+
+        rbShopingGoodsdetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GoodsDetailActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initData() {
@@ -137,7 +147,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
                     goodsdetailsFragment = new GoodsDetailsFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("goodsid",goodsid);//这里的values就是我们要传的值
+                    bundle.putString("goodsid", goodsid);//这里的values就是我们要传的值
                     goodsdetailsFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, goodsdetailsFragment);
@@ -150,7 +160,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
                     shopKnowFragment = new ShopKnowFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("goodsid",goodsid);//这里的values就是我们要传的值
+                    bundle.putString("goodsid", goodsid);//这里的values就是我们要传的值
                     shopKnowFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, shopKnowFragment);

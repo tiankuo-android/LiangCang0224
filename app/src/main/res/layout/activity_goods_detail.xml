@@ -199,26 +199,26 @@
             android:layout_height="match_parent"
             android:src="@drawable/menu_custom_service_2" />
 
-        <RadioGroup
-            android:id="@+id/rg_shoping_goods"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <TextView
+                android:background="@color/backgroundchecked"
                 android:id="@+id/rb_shoping_goodsdetails"
                 style="@style/DarenButtonStyle"
                 android:layout_height="60dp"
                 android:checked="true"
                 android:text="加入购物车" />
 
-            <RadioButton
+            <TextView
                 android:id="@+id/rb_shoping_shopknow"
                 style="@style/DarenButtonStyle"
                 android:layout_height="60dp"
                 android:text="直接购买" />
 
-        </RadioGroup>
+        </LinearLayout>
 
     </LinearLayout>
 
