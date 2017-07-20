@@ -10,4 +10,10 @@
     <color name="transparent_background">#40000000</color>
 
     <color name="background_magazine">#11000000</color>
+
+    <color name="gooosshop">#7D9EC0</color>
+    <color name="gooosshopnow">#7EC0EE</color>
+    <color name="gooosnow">#708090</color>
+
+
 </resources>

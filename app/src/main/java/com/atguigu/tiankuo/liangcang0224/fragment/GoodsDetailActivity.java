@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -61,6 +62,14 @@ public class GoodsDetailActivity extends AppCompatActivity {
     TextView rbShopingShopknow;
     @InjectView(R.id.activity_goods_detail)
     RelativeLayout activityGoodsDetail;
+    @InjectView(R.id.ll_checked)
+    LinearLayout llChecked;
+    @InjectView(R.id.iv_goods_product)
+    ImageView ivGoodsProduct;
+    @InjectView(R.id.tv_goods_product)
+    TextView tvGoodsProduct;
+    @InjectView(R.id.ll_goods_product)
+    LinearLayout llGoodsProduct;
     private String url;
     private String goodsid;
     private ShopKnowFragment shopKnowFragment;
@@ -104,6 +113,24 @@ public class GoodsDetailActivity extends AppCompatActivity {
                 showShare();
             }
         });
+
+        llChecked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GoodsDetailActivity.this, GoodsDetailShopActivity.class);
+                intent.putExtra("goodsid", goodsid);
+                startActivity(intent);
+            }
+        });
+
+        llGoodsProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(GoodsDetailActivity.this, DetailsDarenActivity.class);
+//                intent.putExtra("user_id", datas.getGoods_id());
+//                startActivity(intent);
+            }
+        });
     }
 
     private void showShare() {
@@ -132,60 +159,6 @@ public class GoodsDetailActivity extends AppCompatActivity {
 // 启动分享GUI
         oks.show(this);
     }
-
-//    private void showPopupWindow(View v) {
-//        View contentView = LayoutInflater.from(GoodsDetailActivity.this).inflate(
-//                R.layout.goods_popup_view, null);
-//        //设置按钮的点击事件
-//        TextView tvsharefriend = (TextView) contentView.findViewById(R.id.tv_share_friend);
-//        TextView tvshareweixin = (TextView) contentView.findViewById(R.id.tv_share_weixin);
-//        TextView tvsharexinlang = (TextView) contentView.findViewById(R.id.tv_share_xinlang);
-//        TextView tvsharetencent = (TextView) contentView.findViewById(R.id.tv_share_tencent);
-//        TextView tvshareabolish = (TextView) contentView.findViewById(R.id.tv_share_abolish);
-//        Button btn = (Button) contentView.findViewById(R.id.btn_background);
-//
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                popupWindow.dismiss();
-//            }
-//        });
-//
-//        tvshareabolish.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                popupWindow.dismiss();
-//            }
-//        });
-//
-//        tvsharefriend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        tvsharetencent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        tvshareweixin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        tvsharexinlang.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//    }
 
     private void initData() {
         url = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id="
@@ -221,7 +194,8 @@ public class GoodsDetailActivity extends AppCompatActivity {
         String price = String.format(privce, datas.getPrice());
         tvGoodsDetailsPrice.setText(price);
 
-
+        tvGoodsProduct.setText(datas.getOwner_name());
+        Glide.with(this).load(datas.getGoods_image()).into(ivGoodsProduct);
         tvGoodsDarenDianzan.setText(datas.getLike_count());
 
     }

@@ -82,8 +82,9 @@
             </LinearLayout>
 
             <LinearLayout
+                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="35dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -125,7 +126,63 @@
             </LinearLayout>
 
 
+           <LinearLayout
+               android:background="@color/background_magazine"
+               android:id="@+id/ll_checked"
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="40dp">
+
+               <ImageView
+                   android:src="@drawable/ic_pack_selected"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="选择 尺码 颜色 数量"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textSize="18sp"
+                    android:layout_height="match_parent" />
+
+               <ImageView
+                   android:paddingRight="20dp"
+                   android:src="@drawable/ic_order_arrow_right"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent" />
+           </LinearLayout>
+
             <LinearLayout
+                android:layout_marginTop="15dp"
+                android:background="@color/background_magazine"
+                android:id="@+id/ll_goods_product"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:id="@+id/iv_goods_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:id="@+id/tv_goods_product"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:paddingRight="20dp"
+                    android:src="@drawable/ic_order_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -138,13 +195,13 @@
 
                     <RadioButton
                         android:id="@+id/rb_goodsdetails"
-                        style="@style/DarenButtonStyle"
+                        style="@style/GoodsButtonStyle"
                         android:checked="true"
                         android:text="商品详情" />
 
                     <RadioButton
                         android:id="@+id/rb_shopknow"
-                        style="@style/DarenButtonStyle"
+                        style="@style/GoodsButtonStyle"
                         android:text="购物须知" />
 
                 </RadioGroup>
@@ -192,17 +249,15 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:background="@color/gooosnow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/menu_custom_service_2" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal">
 
             <TextView
-                android:background="@color/backgroundchecked"
+                android:textColor="#ffffff"
+                android:background="@color/gooosshop"
                 android:id="@+id/rb_shoping_goodsdetails"
                 style="@style/DarenButtonStyle"
                 android:layout_height="60dp"
@@ -210,12 +265,12 @@
                 android:text="加入购物车" />
 
             <TextView
+                android:textColor="#ffffff"
+                android:background="@color/gooosshopnow"
                 android:id="@+id/rb_shoping_shopknow"
                 style="@style/DarenButtonStyle"
                 android:layout_height="60dp"
                 android:text="直接购买" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

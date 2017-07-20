@@ -9,4 +9,6 @@
     <string name="goods_depreciate">¥%1$s</string>
 
     <string name="goods_details_price">¥%1$s</string>
+
+    <string name="goods_details_shop">单位\n%1$s</string>
 </resources>
