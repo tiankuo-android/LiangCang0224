@@ -121,8 +121,9 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/background_magazine"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></RelativeLayout>
+        android:layout_height="match_parent"/>
 </LinearLayout>

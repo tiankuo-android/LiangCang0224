@@ -107,8 +107,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.inject(this);
 
-
-
         EventHandler eventHandler = new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
@@ -133,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                SMSSDK.getVerificationCode("86", phoneNum);
+                SMSSDK.getVerificationCode("+86", phoneNum);
                 btnAuth.setClickable(false);
                 //开始倒计时
                 new Thread(new Runnable() {
@@ -172,7 +170,9 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                SMSSDK.submitVerificationCode("86", phoneNum, code);
+                SMSSDK.submitVerificationCode("+86", phoneNum, code);
+
+//                startActivity(new Intent(RegisterActivity.this,MainActivity.class));
             }
         });
 

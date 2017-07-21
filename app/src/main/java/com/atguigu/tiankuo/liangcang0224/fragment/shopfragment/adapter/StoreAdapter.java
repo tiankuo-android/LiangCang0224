@@ -1,5 +1,6 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.GoodsDetailActivity;
-import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.StoreActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.StoreBean;
 import com.bumptech.glide.Glide;
 
@@ -29,9 +29,9 @@ import butterknife.InjectView;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.MyViewHolder> {
     private final List<StoreBean.DataBean.ItemsBean> datas;
-    private final StoreActivity context;
+    private final Context context;
 
-    public StoreAdapter(StoreActivity storeActivity, List<StoreBean.DataBean.ItemsBean> datas) {
+    public StoreAdapter(Context storeActivity, List<StoreBean.DataBean.ItemsBean> datas) {
         this.context = storeActivity;
         this.datas = datas;
     }

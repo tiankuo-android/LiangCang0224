@@ -76,6 +76,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
     private GoodsDetailsFragment goodsdetailsFragment;
     private GoodDetailsBean.DataBean.ItemsBean datas;
     private PopupWindow popupWindow;
+    private GoodDetailsBean bean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +92,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        rgGoods.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switchFragment(checkedId);
-            }
-        });
-        switchFragment(R.id.rb_goodsdetails);
+
 
         rbShopingGoodsdetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +177,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
     }
 
     private void processData(String response) {
-        GoodDetailsBean bean = new Gson().fromJson(response, GoodDetailsBean.class);
+        bean = new Gson().fromJson(response, GoodDetailsBean.class);
         datas = bean.getData().getItems();
 
         Glide.with(this).load(datas.getGoods_image()).into(ivGoodsDaren);
@@ -198,6 +193,13 @@ public class GoodsDetailActivity extends AppCompatActivity {
         Glide.with(this).load(datas.getGoods_image()).into(ivGoodsProduct);
         tvGoodsDarenDianzan.setText(datas.getLike_count());
 
+        rgGoods.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switchFragment(checkedId);
+            }
+        });
+        switchFragment(R.id.rb_goodsdetails);
     }
 
 
@@ -212,6 +214,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
                     Bundle bundle = new Bundle();
                     bundle.putString("goodsid", goodsid);//这里的values就是我们要传的值
+                    bundle.putSerializable("bean",bean);
                     goodsdetailsFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, goodsdetailsFragment);

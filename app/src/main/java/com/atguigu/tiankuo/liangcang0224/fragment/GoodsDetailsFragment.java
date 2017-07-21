@@ -1,6 +1,7 @@
 package com.atguigu.tiankuo.liangcang0224.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter.StoreAdapter;
+import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.StoreBean;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -30,10 +33,11 @@ public class GoodsDetailsFragment extends BaseFragment {
     private LinearLayout llDetailsGoods;
     private String url;
     private String goodsid;
+    private List<StoreBean.DataBean.ItemsBean> datasstore;
+    private GoodDetailsBean bean;
     private List<GoodDetailsBean.DataBean.ItemsBean.GoodsInfoBean> datas;
     private GoodDetailsBean.DataBean.ItemsBean datadesc;
-    private GoodsLikeAdapter adapter;
-    private String likeUrl;
+    private RecyclerView recyclerView;
 
     @Override
     public View initView() {
@@ -45,6 +49,7 @@ public class GoodsDetailsFragment extends BaseFragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             goodsid = bundle.getString("goodsid");
+            bean = (GoodDetailsBean) bundle.getSerializable("bean");
             Log.e("TAG", "userid" + goodsid);
         }
         return llDetailsGoods;
@@ -53,17 +58,13 @@ public class GoodsDetailsFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        url = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id="
-                + goodsid + "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&v=1.0";
+        url = "http://mobile.iliangcang.com/goods/guessLike?app_key=Android&goods_id="
+                + goodsid + "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&uid=305309276&user_token=e8fff51ce18d54cbf817cbcfd162cee&v=1.0";
         getDataFromNet(url);
-
-        likeUrl = "http://mobile.iliangcang.com/goods/guessLike?app_key=Android&goods_id="
-                + goodsid + "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&uid=305309276&user_token=e8fff51ce18d54cbf817cbcfd162cee5&v=1.0";
-        getLikeDataFromNet(likeUrl);
     }
 
-    private void getLikeDataFromNet(String likeUrl) {
-        OkHttpUtils.get().url(likeUrl).build().execute(new StringCallback() {
+    private void getDataFromNet(String url) {
+        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 Log.e("TAG", "请求失败==GoodsDetails");
@@ -77,29 +78,8 @@ public class GoodsDetailsFragment extends BaseFragment {
         });
     }
 
-    private void getDataFromNet(String url) {
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                Log.e("TAG", "请求失败==GoodsDetails");
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                Log.e("TAG", "请求成功==GoodsDetails");
-                processLikeData(response);
-            }
-        });
-    }
-
-    private void processLikeData(String response) {
-        GoodsLikeBean bean1 = new Gson().fromJson(response,GoodsLikeBean.class);
-
-
-    }
-
     private void processData(String response) {
-        GoodDetailsBean bean = new Gson().fromJson(response, GoodDetailsBean.class);
+//        GoodDetailsBean bean = new Gson().fromJson(response, GoodDetailsBean.class);
         datas = bean.getData().getItems().getGoods_info();
         datadesc = bean.getData().getItems();
 
@@ -137,10 +117,11 @@ public class GoodsDetailsFragment extends BaseFragment {
 
         TextView tv_brand_name = (TextView) view.findViewById(R.id.tv_brand_name);
         TextView tv_brand_desc = (TextView) view.findViewById(R.id.tv_brand_desc);
-        RecyclerView recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
-//        TextView tv_gone = (TextView) view.findViewById(R.id.tv_gone);
-//        ImageView iv_gone = (ImageView) view.findViewById(R.id.iv_gone);
-//        LinearLayout llGone = (LinearLayout) view.findViewById(R.id.ll_gone);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+
+        TextView tv_gone = (TextView) view.findViewById(R.id.tv_gone);
+        ImageView iv_gone = (ImageView) view.findViewById(R.id.iv_gone);
+        LinearLayout llGone = (LinearLayout) view.findViewById(R.id.ll_gone);
         
 //        if(datadesc.getHeadimg() != null) {
 //            tv_gone.setVisibility(View.VISIBLE);
@@ -153,6 +134,13 @@ public class GoodsDetailsFragment extends BaseFragment {
         
         tv_brand_name.setText(datadesc.getBrand_info().getBrand_name());
         tv_brand_desc.setText(datadesc.getBrand_info().getBrand_desc());
+
+
+        StoreBean storeBean = new Gson().fromJson(response, StoreBean.class);
+        datasstore = storeBean.getData().getItems();
+        StoreAdapter adapter = new StoreAdapter(mContext,datasstore);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false));
 
         llDetailsGoods.addView(view);
     }
