@@ -1,6 +1,8 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.adapter.MagazineAdapter;
 import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean.MagazineBean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -26,66 +27,48 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import okhttp3.Call;
 
-/**
- * 作者：田阔
- * 邮箱：1226147264@qq.com
- * Created by Administrator on 2017/7/7 0007.
- */
+public class MagazineActivity extends AppCompatActivity {
 
-public class MagazineFragment extends BaseFragment {
-
-    @InjectView(R.id.iv_search)
-    ImageView ivSearch;
-    @InjectView(R.id.iv_daren_back)
-    ImageView ivDarenBack;
-    @InjectView(R.id.tv_mgz)
-    TextView tvMgz;
-    @InjectView(R.id.tv_fragment)
-    TextView tvFragment;
-    @InjectView(R.id.iv_shop)
-    ImageView ivShop;
-    @InjectView(R.id.iv_daren)
-    ImageView ivDaren;
     @InjectView(R.id.iv_back)
     ImageView ivBack;
+    @InjectView(R.id.tv_magazine)
+    TextView tvMagazine;
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
-    @InjectView(R.id.tv_date)
-    TextView tvDate;
-    @InjectView(R.id.ll_title)
-    LinearLayout llTitle;
+    @InjectView(R.id.activity_magazine)
+    LinearLayout activityMagazine;
     private String url;
-    private ArrayList<MagazineBean> listMaga;
+    private String autherid;
+    private ArrayList listMaga;
     private MagazineAdapter adapter;
+    private String auther;
 
     @Override
-    public View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_magazine, null);
-        ButterKnife.inject(this, view);
-        tvDate.setVisibility(View.VISIBLE);
-        tvFragment.setText("杂志");
-        return view;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_magazine);
+        ButterKnife.inject(this);
+
+        Intent intent = getIntent();
+        autherid = intent.getStringExtra("autherid");
+        auther = intent.getStringExtra("auther");
+
+        initData();
+        initListener();
     }
 
-    @Override
-    public void initListener() {
-        super.initListener();
-
-        llTitle.setOnClickListener(new View.OnClickListener() {
+    private void initListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,EnizagamActivity.class);
-                startActivity(intent);
-                //第一个参数为启动时动画效果，第二个参数为退出时动画效果
-                getActivity().overridePendingTransition(R.anim.in,R.anim.out);
+                finish();
             }
         });
     }
 
-    @Override
-    public void initData() {
-        super.initData();
-        url = "http://mobile.iliangcang.com/topic/magazineList?app_key=Android&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&v=1.0";
+    private void initData() {
+        url = "http://mobile.iliangcang.com/topic/magazineList?app_key=Android&author_id="
+        + autherid + "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&uid=305309276&user_token=e8fff51ce18d54cbf817cbcfd162cee5&v=1.0";
         getDataFromNet(url);
     }
 
@@ -139,15 +122,13 @@ public class MagazineFragment extends BaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        adapter = new MagazineAdapter(mContext,listMaga);
+
+        String like = getResources().getString(R.string.magazine_title);
+        String like_count = String.format(like,auther);
+        tvMagazine.setText(like_count);
+
+        adapter = new MagazineAdapter(this,listMaga);
         recyclerview.setAdapter(adapter);
-        recyclerview.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
+        recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
     }
 }

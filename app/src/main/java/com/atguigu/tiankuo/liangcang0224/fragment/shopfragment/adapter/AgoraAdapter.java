@@ -1,5 +1,6 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.GoodsDetailActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.AgoraActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.StoreBean;
 import com.bumptech.glide.Glide;
@@ -41,7 +43,7 @@ public class AgoraAdapter extends RecyclerView.Adapter<AgoraAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         StoreBean.DataBean.ItemsBean bean = datas.get(position);
 
         holder.tvGoods.setText(bean.getGoods_name());
@@ -52,6 +54,15 @@ public class AgoraAdapter extends RecyclerView.Adapter<AgoraAdapter.MyViewHolder
         Glide.with(context)
                 .load(bean.getGoods_image())
                 .into(holder.ivShopBrandGoods);
+
+        holder.llItemGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, GoodsDetailActivity.class);
+                intent.putExtra("goodsid",datas.get(position).getGoods_id());
+                context.startActivity(intent);
+            }
+        });
     }
 
 

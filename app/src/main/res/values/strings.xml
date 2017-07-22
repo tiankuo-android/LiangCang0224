@@ -14,4 +14,6 @@
 
     <string name="goods_shop_cart_price">¥%1$s</string>
     <string name="goods_shop_cart_content">X%1$s</string>
+
+    <string name="magazine_title">杂志-%1$s</string>
 </resources>

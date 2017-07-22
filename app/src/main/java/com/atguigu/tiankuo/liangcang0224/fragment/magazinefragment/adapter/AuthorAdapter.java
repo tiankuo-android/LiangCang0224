@@ -1,6 +1,7 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -9,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.MagazineActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean.AuthorBean;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
@@ -43,8 +46,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-//        Glide.with(context).load(datas.get(position).getThumb()).into(holder.ivAuthor);
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Glide.with(context)
                 .load(datas.get(position).getThumb())
                 .asBitmap()
@@ -60,6 +62,16 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.MyViewHold
                 });
         holder.tvAuthorName.setText(datas.get(position).getAuthor_name());
         holder.tvAuthorContent.setText(datas.get(position).getNote());
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MagazineActivity.class);
+                intent.putExtra("autherid",datas.get(position).getAuthor_id());
+                intent.putExtra("auther",datas.get(position).getAuthor_name());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -74,9 +86,12 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.MyViewHold
         TextView tvAuthorName;
         @InjectView(R.id.tv_author_content)
         TextView tvAuthorContent;
+        @InjectView(R.id.ll_item)
+        LinearLayout llItem;
+
         public MyViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.inject(this, itemView);
         }
     }
 }

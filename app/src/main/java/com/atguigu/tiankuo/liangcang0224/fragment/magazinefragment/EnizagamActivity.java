@@ -68,6 +68,8 @@ public class EnizagamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                finish();
+                //第一个参数为启动时动画效果，第二个参数为退出时动画效果
+                overridePendingTransition(R.anim.ni,R.anim.tuo);
             }
         });
 
@@ -87,11 +89,6 @@ public class EnizagamActivity extends AppCompatActivity {
             case R.id.btn_sort:
                 if (sortFragment == null) {
                     sortFragment = new SortFragment();
-
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("userid",user_id);//这里的values就是我们要传的值
-//                    sortFragment.setArguments(bundle);
-
                     transaction.add(R.id.fl_content, sortFragment);
                 } else {
                     transaction.show(sortFragment);

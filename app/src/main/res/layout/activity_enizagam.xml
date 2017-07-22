@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:drawableTop="@drawable/magazine_fragment_selector"
             android:id="@+id/btn_sort"
             style="@style/DarenButtonStyle"
             android:background="@color/background_magazine"
@@ -23,6 +24,7 @@
             android:textSize="20sp" />
 
         <RadioButton
+            android:drawableTop="@drawable/magazine_author_selector"
             android:id="@+id/btn_author"
             style="@style/DarenButtonStyle"
             android:background="@color/background_magazine"

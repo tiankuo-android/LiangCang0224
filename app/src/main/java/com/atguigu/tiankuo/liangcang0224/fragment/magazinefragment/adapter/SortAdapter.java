@@ -1,14 +1,17 @@
 package com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.MagazineActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.magazinefragment.bean.SortBean;
 import com.bumptech.glide.Glide;
 
@@ -39,11 +42,21 @@ public class SortAdapter extends RecyclerView.Adapter<SortAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tvSort.setText(datas.get(position).getCat_name());
         Glide.with(context)
                 .load(datas.get(position).getThumb())
                 .into(holder.ivSort);
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MagazineActivity.class);
+                intent.putExtra("autherid", datas.get(position).getCat_id());
+                intent.putExtra("auther", datas.get(position).getCat_name());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -56,6 +69,8 @@ public class SortAdapter extends RecyclerView.Adapter<SortAdapter.MyViewHolder> 
         ImageView ivSort;
         @InjectView(R.id.tv_sort)
         TextView tvSort;
+        @InjectView(R.id.ll_item)
+        RelativeLayout llItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
