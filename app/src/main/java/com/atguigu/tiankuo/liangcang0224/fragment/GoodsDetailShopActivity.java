@@ -21,6 +21,7 @@ import okhttp3.Call;
 
 public class GoodsDetailShopActivity extends AppCompatActivity {
 
+
     @InjectView(R.id.iv_goods)
     ImageView ivGoods;
     @InjectView(R.id.iv_back)
@@ -29,22 +30,20 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
     TextView tvGoodsProduct;
     @InjectView(R.id.tv_goods_content)
     TextView tvGoodsContent;
-    @InjectView(R.id.tv_goods_monad)
-    TextView tvGoodsMonad;
-    @InjectView(R.id.rb_shoping_goodsdetails)
-    TextView rbShopingGoodsdetails;
-    @InjectView(R.id.rb_shoping_shopknow)
-    TextView rbShopingShopknow;
-    @InjectView(R.id.activity_goods_detail_shop)
-    LinearLayout activityGoodsDetailShop;
     @InjectView(R.id.tv_goods_details_price)
     TextView tvGoodsDetailsPrice;
+    @InjectView(R.id.tv_goods_monad)
+    TextView tvGoodsMonad;
     @InjectView(R.id.iv_sub)
     ImageView ivSub;
     @InjectView(R.id.tv_value)
     TextView tvValue;
     @InjectView(R.id.iv_add)
     ImageView ivAdd;
+    @InjectView(R.id.rb_shoping_sure)
+    TextView rbShopingSure;
+    @InjectView(R.id.activity_goods_detail_shop)
+    LinearLayout activityGoodsDetailShop;
     private String goodsid;
     private String url;
     private GoodDetailsBean.DataBean.ItemsBean datas;
@@ -77,7 +76,7 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(values < maxvalues) {
+                if (values < maxvalues) {
                     values++;
                 }
                 tvValue.setText(values + "");
@@ -87,10 +86,18 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
         ivSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(values > minvalues) {
+                if (values > minvalues) {
                     values--;
                 }
                 tvValue.setText(values + "");
+            }
+        });
+
+        rbShopingSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(GoodsDetailShopActivity.this,GoodsIndentActivity.class);
+//                startActivity(intent);
             }
         });
     }

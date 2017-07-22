@@ -11,4 +11,7 @@
     <string name="goods_details_price">¥%1$s</string>
 
     <string name="goods_details_shop">单位\n%1$s</string>
+
+    <string name="goods_shop_cart_price">¥%1$s</string>
+    <string name="goods_shop_cart_content">X%1$s</string>
 </resources>

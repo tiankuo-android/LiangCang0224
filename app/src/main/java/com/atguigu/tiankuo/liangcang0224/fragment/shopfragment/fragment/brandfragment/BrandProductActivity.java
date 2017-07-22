@@ -127,8 +127,7 @@ public class BrandProductActivity extends AppCompatActivity {
                     goodsFragment = new GoodsFragment();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("position", position + "");
-                    bundle.putString("band", brand);//这里的values就是我们要传的值
+                    bundle.putString("brand", brand);//这里的values就是我们要传的值
                     goodsFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, goodsFragment);

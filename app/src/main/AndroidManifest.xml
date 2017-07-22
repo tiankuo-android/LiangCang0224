@@ -110,7 +110,7 @@
         <!-- Rich push 核心功能 since 2.0.6 -->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <!-- Required SDK核心功能 -->
         <activity
@@ -202,11 +202,15 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="27ba03c596c71621d55d544e" />
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="1f88046b6dde0" />
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="18984c4e84844cd674edb07e57d68981" />
 
-        <meta-data android:name="Mob-AppKey" android:value="1f88046b6dde0"/>
-        <meta-data android:name="Mob-AppSecret" android:value="18984c4e84844cd674edb07e57d68981"/>
-
-        <activity android:name=".fragment.GoodsDetailShopActivity"></activity>
+        <activity android:name=".fragment.GoodsDetailShopActivity" />
+        <activity android:name=".ShoppingCartActivity" />
     </application>
 
 </manifest>

@@ -730,6 +730,16 @@ public class GoodDetailsBean implements Serializable {
                 private int type;
                 private ContentBean content;
 
+                private boolean isChecked = true;
+
+                public boolean isChecked() {
+                    return isChecked;
+                }
+
+                public void setChecked(boolean checked) {
+                    isChecked = checked;
+                }
+
                 public int getType() {
                     return type;
                 }

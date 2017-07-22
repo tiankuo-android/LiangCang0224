@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.RegisterActivity;
+import com.atguigu.tiankuo.liangcang0224.ShoppingCartActivity;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -93,12 +93,21 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
     private void initListener() {
 
+        ivShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GoodsDetailActivity.this, ShoppingCartActivity.class);
+                intent.putExtra("goodsid", goodsid);
+                startActivity(intent);
+            }
+        });
 
         rbShopingGoodsdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GoodsDetailActivity.this, RegisterActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(GoodsDetailActivity.this, RegisterActivity.class);
+//                startActivity(intent);
+
             }
         });
 
@@ -180,6 +189,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
         bean = new Gson().fromJson(response, GoodDetailsBean.class);
         datas = bean.getData().getItems();
 
+
         Glide.with(this).load(datas.getGoods_image()).into(ivGoodsDaren);
 
         tvGoodsName.setText(datas.getBrand_info().getBrand_name());
@@ -202,7 +212,6 @@ public class GoodsDetailActivity extends AppCompatActivity {
         switchFragment(R.id.rb_goodsdetails);
     }
 
-
     private void switchFragment(int checkedId) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         hidden(transaction);
@@ -214,7 +223,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
                     Bundle bundle = new Bundle();
                     bundle.putString("goodsid", goodsid);//这里的values就是我们要传的值
-                    bundle.putSerializable("bean",bean);
+                    bundle.putSerializable("bean", bean);
                     goodsdetailsFragment.setArguments(bundle);
 
                     transaction.add(R.id.frameLayout, goodsdetailsFragment);

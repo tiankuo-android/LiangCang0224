@@ -82,5 +82,15 @@
             android:layout_height="wrap_content"
             android:src="@drawable/abc_ic_clear_mtrl_alpha"
             android:visibility="gone" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_shopcart"
+            android:gravity="center"
+            android:text="编辑"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 </LinearLayout>
