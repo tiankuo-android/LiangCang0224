@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224;
+package com.atguigu.tiankuo.liangcang0224.shopcart;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;

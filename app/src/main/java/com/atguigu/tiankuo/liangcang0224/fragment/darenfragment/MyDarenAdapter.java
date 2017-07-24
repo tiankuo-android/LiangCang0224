@@ -43,7 +43,7 @@ public class MyDarenAdapter extends RecyclerView.Adapter<MyDarenAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        DarenBean.DataBean.ItemsBean itemsBean = datas.get(position);
+        final DarenBean.DataBean.ItemsBean itemsBean = datas.get(position);
         holder.tvItemName.setText(itemsBean.getUsername());
         holder.tvItemJob.setText(itemsBean.getDuty());
 

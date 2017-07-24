@@ -210,7 +210,7 @@
             android:value="18984c4e84844cd674edb07e57d68981" />
 
         <activity android:name=".fragment.GoodsDetailShopActivity" />
-        <activity android:name=".ShoppingCartActivity" />
+        <activity android:name=".shopcart.ShoppingCartActivity" />
         <activity android:name=".fragment.magazinefragment.MagazineActivity"></activity>
     </application>
 

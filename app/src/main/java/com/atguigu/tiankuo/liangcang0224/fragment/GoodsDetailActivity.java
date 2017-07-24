@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.ShoppingCartActivity;
+import com.atguigu.tiankuo.liangcang0224.shopcart.ShoppingCartActivity;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;

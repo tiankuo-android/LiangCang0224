@@ -55,6 +55,10 @@ public class LikeDarenAdapter extends RecyclerView.Adapter<LikeDarenAdapter.MyVi
             public void onClick(View v) {
                 Intent intent = new Intent(context,GoodsDarenActivity.class);
                 intent.putExtra("goodid",datas.get(position).getGoods_id());
+                intent.putExtra("goodsimage",datas.get(position).getGoods_image());
+                intent.putExtra("goodsname",datas.get(position).getGoods_name());
+                intent.putExtra("price",datas.get(position).getPrice());
+                intent.putExtra("likecount",datas.get(position).getLike_count());
                 context.startActivity(intent);
             }
         });

@@ -47,6 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:text="@string/goods_daren"
                 android:gravity="center_vertical" />
 
             <TextView
@@ -88,5 +89,9 @@
             android:background="#33000000" />
     </LinearLayout>
 
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
 
 </ScrollView>

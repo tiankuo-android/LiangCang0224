@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224;
+package com.atguigu.tiankuo.liangcang0224.shopcart;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
 
 import java.util.List;

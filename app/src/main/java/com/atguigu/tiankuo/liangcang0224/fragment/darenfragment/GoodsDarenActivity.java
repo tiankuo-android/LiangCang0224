@@ -3,20 +3,14 @@ package com.atguigu.tiankuo.liangcang0224.fragment.darenfragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.darenfragment.bean.GoodsDarenBean;
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -25,7 +19,6 @@ import butterknife.InjectView;
 import okhttp3.Call;
 
 public class GoodsDarenActivity extends AppCompatActivity {
-
 
     @InjectView(R.id.iv_goods_daren)
     ImageView ivGoodsDaren;
@@ -41,21 +34,15 @@ public class GoodsDarenActivity extends AppCompatActivity {
     ImageView ivGoodsDarenAuthor;
     @InjectView(R.id.tv_goods_daren_author)
     TextView tvGoodsDarenAuthor;
-    @InjectView(R.id.recyclerview)
-    RecyclerView recyclerview;
     @InjectView(R.id.activity_goods_daren)
-    LinearLayout activityGoodsDaren;
-    @InjectView(R.id.rb_goodsdetails)
-    RadioButton rbGoodsdetails;
-    @InjectView(R.id.rb_shopknow)
-    RadioButton rbShopknow;
-    @InjectView(R.id.rg_goods)
-    RadioGroup rgGoods;
-    @InjectView(R.id.frameLayout)
-    FrameLayout frameLayout;
+    ScrollView activityGoodsDaren;
     private String url;
-    private GoodsDarenBean.DataBean.ItemsBean datas;
     private String goodid;
+    private String goodsimage;
+    private String goodsname;
+    private String prices;
+    private String likecount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +52,18 @@ public class GoodsDarenActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         goodid = intent.getStringExtra("goodid");
+        goodsimage = intent.getStringExtra("goodsimage");
+        goodsname = intent.getStringExtra("goodsname");
+        prices = intent.getStringExtra("price");
+        likecount = intent.getStringExtra("likecount");
         initData();
         initListener();
     }
 
     private void initData() {
-        url = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id="
+        url = "http://mobile.iliangcang.com/comments/goods?app_key=Android&count=3&goods_id="
                 + goodid +
-                "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&v=1.0";
+                "&page=1&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&uid=305309276&user_token=e8fff51ce18d54cbf817cbcfd162cee5&v=1.0";
         getDataFromNet(url);
     }
 
@@ -92,19 +83,23 @@ public class GoodsDarenActivity extends AppCompatActivity {
     }
 
     private void processData(String response) {
-        GoodsDarenBean bean = new Gson().fromJson(response, GoodsDarenBean.class);
-        datas = bean.getData().getItems();
 
-        Glide.with(this).load(datas.getGoods_image()).into(ivGoodsDaren);
+        Glide.with(this).load(goodsimage).into(ivGoodsDaren);
 
-        tvGoodsDarenName.setText(datas.getGoods_name());
+        tvGoodsDarenName.setText(goodsname);
 
-        tvGoodsDarenPrice.setText(datas.getPrice());
-        tvGoodsDarenDianzan.setText(datas.getLike_count());
+        String price = getResources().getString(R.string.goods_daren);
+        String darenprice = String.format(price, prices);
+        tvGoodsDarenPrice.setText(darenprice);
 
-        Glide.with(this).load(datas.getHeadimg()).into(ivGoodsDarenAuthor);
-        tvGoodsDarenAuthor.setText(datas.getOwner_name());
+        tvGoodsDarenDianzan.setText(likecount);
 
+//        Glide.with(this).load(datadaren.getHeadimg()).into(ivGoodsDarenAuthor);
+//        tvGoodsDarenAuthor.setText(datadaren.getOwner_name());
+
+//        datasdaren = bean.getData().getItems().getLiked();
+//        adapter = new GoodsDarenAdapter(GoodsDarenActivity.this,datadaren);
+//        recyclerview.setAdapter(adapter);
 
     }
 
@@ -117,7 +112,5 @@ public class GoodsDarenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
-
 }

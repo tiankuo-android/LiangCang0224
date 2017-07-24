@@ -1,7 +1,8 @@
-package com.atguigu.tiankuo.liangcang0224;
+package com.atguigu.tiankuo.liangcang0224.shopcart;
 
 import android.view.View;
 
+import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 
 /**
@@ -13,7 +14,7 @@ import com.atguigu.tiankuo.liangcang0224.base.BaseFragment;
 public class GoodsShopFinishFragment extends BaseFragment {
     @Override
     public View initView() {
-        View view = View.inflate(mContext,R.layout.fragment_finish_shop,null);
+        View view = View.inflate(mContext, R.layout.fragment_finish_shop,null);
         return view;
     }
 }
