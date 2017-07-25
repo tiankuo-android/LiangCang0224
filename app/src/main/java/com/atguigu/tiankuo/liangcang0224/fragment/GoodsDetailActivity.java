@@ -9,14 +9,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.shopcart.ShoppingCartActivity;
+import com.atguigu.tiankuo.liangcang0224.utils.CartStorage;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -75,7 +76,6 @@ public class GoodsDetailActivity extends AppCompatActivity {
     private ShopKnowFragment shopKnowFragment;
     private GoodsDetailsFragment goodsdetailsFragment;
     private GoodDetailsBean.DataBean.ItemsBean datas;
-    private PopupWindow popupWindow;
     private GoodDetailsBean bean;
 
     @Override
@@ -105,9 +105,8 @@ public class GoodsDetailActivity extends AppCompatActivity {
         rbShopingGoodsdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(GoodsDetailActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-
+                CartStorage.getInstance(GoodsDetailActivity.this).addData(bean);
+                Toast.makeText(GoodsDetailActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -127,14 +126,15 @@ public class GoodsDetailActivity extends AppCompatActivity {
             }
         });
 
-        llGoodsProduct.setOnClickListener(new View.OnClickListener() {
+        rbShopingShopknow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(GoodsDetailActivity.this, DetailsDarenActivity.class);
-//                intent.putExtra("user_id", datas.getGoods_id());
-//                startActivity(intent);
+                Intent intent = new Intent(GoodsDetailActivity.this,GoodsDetailShopActivity.class);
+                intent.putExtra("goodsid", goodsid);
+                startActivity(intent);
             }
         });
+
     }
 
     private void showShare() {

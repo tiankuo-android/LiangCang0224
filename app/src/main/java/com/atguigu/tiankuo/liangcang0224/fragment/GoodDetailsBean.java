@@ -220,6 +220,33 @@ public class GoodDetailsBean implements Serializable {
             private List<String> images_item;
             private List<SkuInvBean> sku_inv;
             private List<GoodsInfoBean> goods_info;
+            private int number = 1;
+            private boolean isCheck =true;
+            private boolean isDelete = false;
+
+            public boolean isCheck() {
+                return isCheck;
+            }
+
+            public void setCheck(boolean check) {
+                isCheck = check;
+            }
+
+            public boolean isDelete() {
+                return isDelete;
+            }
+
+            public void setDelete(boolean delete) {
+                isDelete = delete;
+            }
+
+            public int getNumber() {
+                return number;
+            }
+
+            public void setNumber(int number) {
+                this.number = number;
+            }
 
             public String getGoods_id() {
                 return goods_id;

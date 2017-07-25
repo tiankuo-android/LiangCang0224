@@ -1,10 +1,9 @@
 package com.atguigu.tiankuo.liangcang0224.shopcart;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -13,15 +12,12 @@ import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
 import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
+import com.atguigu.tiankuo.liangcang0224.utils.CartStorage;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import okhttp3.Call;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
@@ -41,6 +37,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     ImageView ivDaren;
     @InjectView(R.id.iv_back)
     ImageView ivBack;
+    @InjectView(R.id.tv_shopcart)
+    TextView tvShopcart;
     @InjectView(R.id.ll_title)
     LinearLayout llTitle;
     @InjectView(R.id.recyclerview)
@@ -55,18 +53,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     LinearLayout llCheckAll;
     @InjectView(R.id.activity_shopping_cart)
     LinearLayout activityShoppingCart;
-    @InjectView(R.id.tv_shopcart)
-    TextView tvShopcart;
-
-    //编辑状态
-    private static final int ACTION_EDIT = 1;
-    //完成状态
-    private static final int ACTION_COMPLETE = 2;
-    private String goodsid;
-    private String url;
-    private List<GoodDetailsBean.DataBean.ItemsBean.GoodsInfoBean> datas;
+    private List<GoodDetailsBean> datas;
     private ShoppingCartAdapter adapter;
-    boolean checked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +62,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_cart);
         ButterKnife.inject(this);
 
-        Intent intent = getIntent();
-        goodsid = intent.getStringExtra("goodsid");
-
+        initView();
         initData();
         initListener();
     }
@@ -89,84 +75,49 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
-    }
+        checkboxAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private void initData() {
+                boolean checked = checkboxAll.isChecked();
+                //设置是否选择
+                adapter.checkAll_none(checked);
 
-        ivDarenBack.setVisibility(View.VISIBLE);
-        tvFragment.setText("购物车");
-        tvShopcart.setVisibility(View.VISIBLE);
+                //重新计算价格
+                adapter.showTotalPrice();
+            }
+        });
 
-        //设置编辑状态
-        tvShopcart.setTag(ACTION_EDIT);
-        tvShopcart.setText("编辑");
-        //显示去结算布局
-        llCheckAll.setVisibility(View.VISIBLE);
 
         tvShopcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //1.得到状态
-                int action = (int) v.getTag();
-                //2.根据不同状态做不同的处理
-                if (action == ACTION_EDIT) {
-                    //切换完成状态
-                    showDelete();
-                } else {
-                    //切换成编辑状态
-                    hideDelete();
+                String str = tvShopcart.getText().toString().trim();
+                if (str.equals("编辑")) {
+                    tvShopcart.setText("完成");
+                    adapter.showDelete(true);
+                }
+
+                if (str.equals("完成")) {
+                    tvShopcart.setText("编辑");
+                    adapter.showDelete(false);
                 }
             }
         });
-
-
-
-
-
-        url = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id="
-                + goodsid + "&sig=CD0E234053E25DD6111E3DBD450A4B85%7C954252010968868&v=1.0";
-        getDataFromNet(url);
     }
 
-    private void hideDelete() {
-        tvShopcart.setTag(ACTION_EDIT);
-        tvShopcart.setText("编辑");
+    private void initView() {
+        tvFragment.setText("购物车");
+        ivDarenBack.setVisibility(View.VISIBLE);
+        tvShopcart.setVisibility(View.VISIBLE);
 
-
+        datas = CartStorage.getInstance(this).getAllData();
+        adapter = new ShoppingCartAdapter(this, datas, checkboxAll, tvShopcartTotal);
     }
 
-    private void showDelete() {
+    private void initData() {
 
-        tvShopcart.setTag(ACTION_COMPLETE);
-        tvShopcart.setText("完成");
-
-        //把所有的数据设置非选择状态
-
-    }
-
-    private void getDataFromNet(String url) {
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                Log.e("TAG", "请求失败==Goods");
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                Log.e("TAG", "请求成功==Goods");
-                processData(response);
-            }
-        });
-    }
-
-    private void processData(String response) {
-        GoodDetailsBean bean = new Gson().fromJson(response, GoodDetailsBean.class);
-        datas = bean.getData().getItems().getGoods_info();
-
-        if(datas != null && datas.size() > 0) {
-            adapter = new ShoppingCartAdapter(this,datas);
-            recyclerview.setAdapter(adapter);
-
-        }
+        recyclerview.setAdapter(adapter);
+        recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 }

@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
+import com.atguigu.tiankuo.liangcang0224.shopcart.ShoppingCartActivity;
+import com.atguigu.tiankuo.liangcang0224.utils.CartStorage;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -50,6 +52,7 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
     private int values = 1;
     private int minvalues = 1;
     private int maxvalues = 10;
+    private GoodDetailsBean bean;
 
 
     @Override
@@ -96,8 +99,9 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
         rbShopingSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(GoodsDetailShopActivity.this,GoodsIndentActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(GoodsDetailShopActivity.this,ShoppingCartActivity.class);
+                CartStorage.getInstance(GoodsDetailShopActivity.this).addData(bean);
+                startActivity(intent);
             }
         });
     }
@@ -124,7 +128,7 @@ public class GoodsDetailShopActivity extends AppCompatActivity {
     }
 
     private void processData(String response) {
-        GoodDetailsBean bean = new Gson().fromJson(response, GoodDetailsBean.class);
+        bean = new Gson().fromJson(response, GoodDetailsBean.class);
         datas = bean.getData().getItems();
 
         Glide.with(this).load(datas.getGoods_image()).into(ivGoods);

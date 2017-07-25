@@ -1,123 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="120dp">
+
+
+    <CheckBox
+        android:id="@+id/checkbox_item_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:button="@null"
+        android:checked="true"
+        android:clickable="false"
+        android:drawableLeft="@drawable/checkbox_selector"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:id="@+id/iv_item"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/checkbox_item_all"
+        android:visibility="visible" />
+
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/ll_item1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/background_magazine"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/cb_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:button="@drawable/checkbox_selector"
-            android:checked="true"
-            android:clickable="false" />
-
-        <ImageView
-            android:id="@+id/iv_shop"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitXY" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/iv_sub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/goods_sub_btn" />
-
-                <TextView
-                    android:id="@+id/tv_value"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textColor="#55000000"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:id="@+id/iv_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/goods_add_btn" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_good_content"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:lines="1"
-                android:textColor="#404040"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_desc_gov"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:textColor="#404040"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_good_price"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/goods_shop_cart_price"
-                    android:textColor="#f00"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/goods_shop_cart_content"
-                    android:visibility="gone" />
-            </LinearLayout>
-        </LinearLayout>
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/iv_item"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/gooosshopnow"
-            android:gravity="center"
-            android:text="删除"
-            android:visibility="gone" />
+            android:id="@+id/tv_item_name1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_price1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="$198.00"
+                android:textColor="@color/material_blue" />
+
+
+            <TextView
+                android:id="@+id/tv_item_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:padding="10dp"
+                android:text="x1" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp"
-        android:background="#22000000" />
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/iv_item"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <com.atguigu.tiankuo.liangcang0224.utils.AddSubView
+            android:id="@+id/item_addSubView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:maxValue="12"
+            app:minValue="0"
+            app:value="1" />
+
+
+        <TextView
+
+            android:id="@+id/tv_item_name2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="【独家首发】乐可丽舒漱口水 | 乳酸菌强效抗菌 清爽低刺激【300ml】" />
+
+
+        <TextView
+            android:id="@+id/tv_item_price2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="$198.00"
+            android:textColor="@color/material_blue" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_item_delete"
+        android:layout_width="50dp"
+        android:layout_height="120dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/material_blue"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+
+
+</RelativeLayout>
