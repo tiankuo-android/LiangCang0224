@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail.GoodDetailsBean;
 import com.atguigu.tiankuo.liangcang0224.utils.AddSubView;
 import com.atguigu.tiankuo.liangcang0224.utils.CartStorage;
 import com.bumptech.glide.Glide;

@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.GoodsDetailActivity;
+import com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail.GoodsDetailActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.AgoraActivity;
 import com.atguigu.tiankuo.liangcang0224.fragment.shopfragment.bean.StoreBean;
 import com.bumptech.glide.Glide;

@@ -2,11 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bilibili_background"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="个人中心"
-        android:textSize="30sp" />
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="bilibili"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_menu_top_game_center"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <ImageView
+            android:id="@+id/iv_loadingdown"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_toolbar_menu_download"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_toolbar_menu_search"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_bilibili"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <RadioButton
+            android:text="直播"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_zhibo"/>
+        <RadioButton
+            android:text="推荐"
+            android:checked="true"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_recommend" />
+        <RadioButton
+            android:text="追番"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_zhuifan"/>
+        <RadioButton
+            android:text="分区"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_zone"/>
+        <RadioButton
+            android:text="动态"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_dynamic"/>
+        <RadioButton
+            android:text="发现"
+            style="@style/BiliButtonStyle"
+            android:id="@+id/rb_discover"/>
+    </RadioGroup>
+    <FrameLayout
+        android:background="@color/backgroundunchecked"
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

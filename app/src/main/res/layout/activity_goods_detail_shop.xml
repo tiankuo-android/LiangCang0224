@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundchecked"
     android:orientation="vertical"
-    tools:context="com.atguigu.tiankuo.liangcang0224.fragment.GoodsDetailShopActivity">
+    tools:context="com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail.GoodsDetailShopActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

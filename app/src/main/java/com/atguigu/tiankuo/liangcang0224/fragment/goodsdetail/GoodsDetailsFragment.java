@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;

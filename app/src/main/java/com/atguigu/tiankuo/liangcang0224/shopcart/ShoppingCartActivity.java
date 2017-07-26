@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.atguigu.tiankuo.liangcang0224.R;
-import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail.GoodDetailsBean;
 import com.atguigu.tiankuo.liangcang0224.utils.CartStorage;
 import com.atguigu.tiankuo.liangcang0224.utils.pay.PayKeys;
 import com.atguigu.tiankuo.liangcang0224.utils.pay.PayResult;

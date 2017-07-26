@@ -15,5 +15,7 @@
     <color name="gooosshopnow">#7EC0EE</color>
     <color name="gooosnow">#708090</color>
 
+    <color name="bilibili_background">#FF6EB4</color>
 
+    <color name="transparent">#ffffff</color>
 </resources>

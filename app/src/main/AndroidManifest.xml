@@ -65,7 +65,7 @@
         <activity android:name=".fragment.shopfragment.fragment.homefragment.HomeActivity" />
         <activity android:name=".fragment.magazinefragment.EnizagamActivity" />
         <activity android:name=".fragment.darenfragment.GoodsDarenActivity" />
-        <activity android:name=".fragment.GoodsDetailActivity" />
+        <activity android:name=".fragment.goodsdetail.GoodsDetailActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity
@@ -209,7 +209,7 @@
             android:name="Mob-AppSecret"
             android:value="18984c4e84844cd674edb07e57d68981" />
 
-        <activity android:name=".fragment.GoodsDetailShopActivity" />
+        <activity android:name=".fragment.goodsdetail.GoodsDetailShopActivity" />
         <activity android:name=".shopcart.ShoppingCartActivity" />
         <activity android:name=".fragment.magazinefragment.MagazineActivity"></activity>
     </application>

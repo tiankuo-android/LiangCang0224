@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

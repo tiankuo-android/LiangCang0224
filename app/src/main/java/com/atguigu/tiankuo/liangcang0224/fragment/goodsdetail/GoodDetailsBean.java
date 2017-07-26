@@ -1,4 +1,4 @@
-package com.atguigu.tiankuo.liangcang0224.fragment;
+package com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail;
 
 import java.io.Serializable;
 import java.util.List;

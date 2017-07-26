@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
-import com.atguigu.tiankuo.liangcang0224.fragment.GoodDetailsBean;
+import com.atguigu.tiankuo.liangcang0224.fragment.goodsdetail.GoodDetailsBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
